@@ -6,6 +6,7 @@ namespace FileParser
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -21,6 +22,13 @@ namespace FileParser
             this.filePath = filePath;
             this.SearchValue = search;
             this.ReplaceValue = null;
+        }
+
+        public StreamParser(string filePath, string search, string pattern)
+        {
+            this.filePath = filePath;
+            this.SearchValue = search;
+            this.ReplaceValue = pattern;
         }
 
         public override int CountEnteries()
@@ -47,7 +55,7 @@ namespace FileParser
 
         }
 
-        public override int ReplaceEnteries()
+        public override int ReplaceEnteries(bool overwriteFlag)
         {
             if (this.ReplaceValue == null)
             {
@@ -62,23 +70,47 @@ namespace FileParser
 
             try
             {
+
                 using (StreamReader streamReader = new StreamReader(this.filePath))
-                using (StreamWriter streamWriter = new StreamWriter(tempFilePath))
                 {
-                    while (!streamReader.EndOfStream)
+                    using (StreamWriter streamWriter = new StreamWriter(tempFilePath))
                     {
-                        string buffer = streamReader.ReadLine();
-                        Regex analyser = new Regex(this.SearchValue);
-                        buffer = analyser.Replace(this.SearchValue, this.ReplaceValue);
-                        streamWriter.WriteLine(buffer);
+                        while (!streamReader.EndOfStream)
+                        {
+                            string buffer = streamReader.ReadLine();
+                            int subResult = Regex.Matches(buffer, this.SearchValue).Count;
+                            Regex analyser = new Regex(this.SearchValue);
+                            streamWriter.WriteLine(analyser.Replace(buffer, this.ReplaceValue));
+                            result += subResult;
+                        }
                     }
+                }
+
+                if (overwriteFlag)
+                {
+                    string tempFileMovePath = Path.GetDirectoryName(this.filePath) + "\\"
+                                            + Path.GetFileNameWithoutExtension(this.filePath) + ".txt";
+                    File.Delete(this.filePath);
+                    File.Move(tempFilePath, tempFileMovePath);
+                }
+                else
+                {
+                    string tempFileMovePath = Path.GetDirectoryName(this.filePath) + "\\"
+                                            + Path.GetFileNameWithoutExtension(tempFilePath) + ".txt";
+                    File.Move(tempFilePath, tempFileMovePath);
+                }
+
+                if (result == 0)
+                {
+                    // specify
+                    throw new Exception();
                 }
 
                 return result;
             }
             catch (Exception ex)
             {
-                // Specify
+                // specify
                 throw new Exception();
             }
         }
