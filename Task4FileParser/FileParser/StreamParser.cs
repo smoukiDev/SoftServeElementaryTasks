@@ -31,14 +31,9 @@ namespace FileParser
                 using (StreamReader streamReader = new StreamReader(this.filePath))
                 {
                     string buffer;
-                    Regex analyser;
                     while ((buffer = streamReader.ReadLine()) != null)
                     {
-                        analyser = new Regex(this.SearchValue);
-                        if (analyser.IsMatch(buffer) == true)
-                        {
-                            result++;
-                        }
+                        result += Regex.Matches(buffer, this.SearchValue).Count;
                     }
                 }
 
@@ -54,7 +49,38 @@ namespace FileParser
 
         public override int ReplaceEnteries()
         {
-            throw new NotImplementedException();
+            if (this.ReplaceValue == null)
+            {
+                // Create Custom Exception
+                throw new Exception();
+            }
+
+            int result = 0;
+
+            // Replace?
+            string tempFilePath = Path.GetTempFileName();
+
+            try
+            {
+                using (StreamReader streamReader = new StreamReader(this.filePath))
+                using (StreamWriter streamWriter = new StreamWriter(tempFilePath))
+                {
+                    while (!streamReader.EndOfStream)
+                    {
+                        string buffer = streamReader.ReadLine();
+                        Regex analyser = new Regex(this.SearchValue);
+                        buffer = analyser.Replace(this.SearchValue, this.ReplaceValue);
+                        streamWriter.WriteLine(buffer);
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                // Specify
+                throw new Exception();
+            }
         }
     }
 }
