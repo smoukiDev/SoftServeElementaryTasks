@@ -21,6 +21,6 @@ namespace FileParser
 
         public abstract int CountEnteries();
 
-        public abstract int ReplaceEnteries(bool overwriteFlag);
+        public abstract int ReplaceEnteries();
     }
 }

@@ -17,11 +17,14 @@ namespace FileParser
     {
         private string filePath;
 
+        public bool OverwriteMode { get; set; }
+
         public StreamParser(string filePath, string search)
         {
             this.filePath = filePath;
             this.SearchValue = search;
             this.ReplaceValue = null;
+            this.OverwriteMode = false;
         }
 
         public StreamParser(string filePath, string search, string pattern)
@@ -29,6 +32,15 @@ namespace FileParser
             this.filePath = filePath;
             this.SearchValue = search;
             this.ReplaceValue = pattern;
+            this.OverwriteMode = false;
+        }
+
+        public StreamParser(string filePath, string search, string pattern, bool mode)
+        {
+            this.filePath = filePath;
+            this.SearchValue = search;
+            this.ReplaceValue = pattern;
+            this.OverwriteMode = mode;
         }
 
         public override int CountEnteries()
@@ -55,7 +67,7 @@ namespace FileParser
 
         }
 
-        public override int ReplaceEnteries(bool overwriteFlag)
+        public override int ReplaceEnteries()
         {
             if (this.ReplaceValue == null)
             {
@@ -86,7 +98,7 @@ namespace FileParser
                     }
                 }
 
-                if (overwriteFlag)
+                if (this.OverwriteMode)
                 {
                     string tempFileMovePath = Path.GetDirectoryName(this.filePath) + "\\"
                                             + Path.GetFileNameWithoutExtension(this.filePath) + ".txt";
