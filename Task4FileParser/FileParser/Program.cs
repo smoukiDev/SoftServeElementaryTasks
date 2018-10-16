@@ -15,8 +15,8 @@ namespace FileParser
     {
         static void Main(string[] args)
         {
-            StreamParser sp = new StreamParser(@"D:\BackLog & Estimate.txt", "Limitation", "Constraint");
-            Console.WriteLine(sp.ReplaceEnteries());
+            FileParserConsoleApplication application = new FileParserConsoleApplication();
+            application.Run(args);
             Console.ReadLine();
         }
     }

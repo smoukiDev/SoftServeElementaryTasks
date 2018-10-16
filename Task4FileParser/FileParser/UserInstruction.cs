@@ -12,7 +12,6 @@ namespace FileParser
 
     public abstract class UserInstruction
     {
-        // Convension for protected properties?
         protected string CompanyName { get; set; }
 
         protected string ProductName { get; set; }
