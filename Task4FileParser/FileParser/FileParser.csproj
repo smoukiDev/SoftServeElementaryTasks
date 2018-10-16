@@ -43,12 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StreamParserExceptions\FileIsEmptyException.cs" />
     <Compile Include="FileParserConsoleApplication.cs" />
+    <Compile Include="StreamParserExceptions\FileToParseNotFoundException.cs" />
+    <Compile Include="StreamParserExceptions\NoReplacePatternException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreamParser.cs" />
     <Compile Include="TextParser.cs" />
     <Compile Include="UserInstruction.cs" />
+    <Compile Include="StreamParserExceptions\ZeroReplaceException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

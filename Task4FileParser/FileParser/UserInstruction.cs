@@ -12,6 +12,21 @@ namespace FileParser
 
     public abstract class UserInstruction
     {
+        // default data seize memory?
+
+        public UserInstruction()
+        {
+            this.CompanyName = "Company";
+            this.ProductName = "Product";
+            this.ProductVersion = "v.0.0";
+            this.ReleaseDate = DateTime.Now;
+            this.Copyright = $"Copyright(c) "
+                           + $"{this.ReleaseDate.Year} "
+                           + $"by {this.CompanyName}.All Rights Reserved.";
+            this.ProductDescription = "Product Desription";
+            this.UserManual = "Usage:";
+        }
+
         protected string CompanyName { get; set; }
 
         protected string ProductName { get; set; }

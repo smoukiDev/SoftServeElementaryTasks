@@ -15,13 +15,13 @@ namespace FileParser
 
     class StreamParser : TextParser
     {
-        private string filePath;
+        public string FilePath{ get; private set; }
 
         public bool OverwriteMode { get; set; }
 
         public StreamParser(string filePath, string search)
         {
-            this.filePath = filePath;
+            this.FilePath = filePath;
             this.SearchValue = search;
             this.ReplaceValue = null;
             this.OverwriteMode = false;
@@ -29,7 +29,7 @@ namespace FileParser
 
         public StreamParser(string filePath, string search, string pattern)
         {
-            this.filePath = filePath;
+            this.FilePath = filePath;
             this.SearchValue = search;
             this.ReplaceValue = pattern;
             this.OverwriteMode = false;
@@ -37,7 +37,7 @@ namespace FileParser
 
         public StreamParser(string filePath, string search, string pattern, bool mode)
         {
-            this.filePath = filePath;
+            this.FilePath = filePath;
             this.SearchValue = search;
             this.ReplaceValue = pattern;
             this.OverwriteMode = mode;
@@ -45,10 +45,24 @@ namespace FileParser
 
         public override int CountEnteries()
         {
+            try
+            {
+                if (new FileInfo(this.FilePath).Length == 0)
+                {
+                    string message = "File is empty";
+                    throw new FileIsEmptyException(message);
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                string message = "Path or file name is incorect.";
+                throw new FileToParseNotFoundException(message + Environment.NewLine + ex.Message, ex);
+            }
+
             int result = 0;
             try
             {
-                using (StreamReader streamReader = new StreamReader(this.filePath))
+                using (StreamReader streamReader = new StreamReader(this.FilePath))
                 {
                     string buffer;
                     while ((buffer = streamReader.ReadLine()) != null)
@@ -71,19 +85,32 @@ namespace FileParser
         {
             if (this.ReplaceValue == null)
             {
-                // Create Custom Exception
-                throw new Exception();
+                string message = "String to replace on hasn't specified";
+                throw new NoReplacePatternException(message);
+            }
+
+            try
+            {
+                if (new FileInfo(this.FilePath).Length == 0)
+                {
+                    string message = "File is empty";
+                    throw new FileIsEmptyException(message);
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                string message = "Path or file name is incorect.";
+                throw new FileToParseNotFoundException(message + Environment.NewLine + ex.Message, ex);
             }
 
             int result = 0;
 
             // Replace?
-            string tempFilePath = Path.GetTempFileName();
-
             try
             {
+                string tempFilePath = Path.GetTempFileName();
 
-                using (StreamReader streamReader = new StreamReader(this.filePath))
+                using (StreamReader streamReader = new StreamReader(this.FilePath))
                 {
                     using (StreamWriter streamWriter = new StreamWriter(tempFilePath))
                     {
@@ -100,31 +127,33 @@ namespace FileParser
 
                 if (this.OverwriteMode)
                 {
-                    string tempFileMovePath = Path.GetDirectoryName(this.filePath) + "\\"
-                                            + Path.GetFileNameWithoutExtension(this.filePath) + ".txt";
-                    File.Delete(this.filePath);
+                    string tempFileMovePath = Path.GetDirectoryName(this.FilePath) + "\\"
+                                            + Path.GetFileNameWithoutExtension(this.FilePath) + ".txt";
+                    File.Delete(this.FilePath);
                     File.Move(tempFilePath, tempFileMovePath);
                 }
                 else
                 {
-                    string tempFileMovePath = Path.GetDirectoryName(this.filePath) + "\\"
+                    string tempFileMovePath = Path.GetDirectoryName(this.FilePath) + "\\"
                                             + Path.GetFileNameWithoutExtension(tempFilePath) + ".txt";
                     File.Move(tempFilePath, tempFileMovePath);
                 }
 
                 if (result == 0)
                 {
-                    // specify
-                    throw new Exception();
+                    string message = "No matches have been detected.";
+                    throw new ZeroReplaceException(message);
                 }
 
                 return result;
             }
             catch (Exception ex)
             {
-                // specify
-                throw new Exception();
+                // StreamReader Exceptions
+                string message = "Path or file name is incorect.";
+                throw new FileToParseNotFoundException(message + Environment.NewLine + ex.Message, ex);
             }
         }
+
     }
 }

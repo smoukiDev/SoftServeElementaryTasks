@@ -10,7 +10,7 @@ namespace FileParser
     using System.Text;
     using System.Threading.Tasks;
 
-    abstract class TextParser
+    public abstract class TextParser
     {
         private string searchValue;
         private string replaceValue;

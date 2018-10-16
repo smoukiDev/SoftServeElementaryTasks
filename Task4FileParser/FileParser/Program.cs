@@ -17,7 +17,6 @@ namespace FileParser
         {
             FileParserConsoleApplication application = new FileParserConsoleApplication();
             application.Run(args);
-            Console.ReadLine();
         }
     }
 }
