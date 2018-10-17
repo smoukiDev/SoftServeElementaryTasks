@@ -15,5 +15,11 @@ namespace SortTriangles
         double CalculatePerimeter();
 
         double CalculateSquere();
+
+        double this[int index]
+        {
+            get;
+            set;
+        }
     }
 }
