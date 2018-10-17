@@ -13,7 +13,7 @@ namespace FileParser
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
-    class StreamParser : TextParser
+    class StreamParser : TextParser, IDisposable
     {
         public string FilePath{ get; private set; }
 
@@ -153,6 +153,34 @@ namespace FileParser
                 string message = "Path or file name is incorect.";
                 throw new FileToParseNotFoundException(message + Environment.NewLine + ex.Message, ex);
             }
+        }
+
+        private bool disposed = false;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    // release managed resources
+                }
+
+                // release unmanaged resources
+                this.disposed = true;
+            }
+        }
+
+        // Деструктор
+        ~StreamParser()
+        {
+            Dispose(false);
         }
 
     }
