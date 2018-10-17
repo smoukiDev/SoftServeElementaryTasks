@@ -8,6 +8,8 @@ namespace SortTriangles
 {
     public class Triangle : IFigure
     {
+        private static readonly string MEASURE = "sm";
+
         private double _sideA;
         private double _sideB;
         private double _sideC;
@@ -105,10 +107,16 @@ namespace SortTriangles
             throw new TriangleNoExistException(message);
         }
 
-        public double CalculateSquere()
+        public double CalculateSquare()
         {
             double half = this.CalculatePerimeter() / 2;
             return Math.Sqrt(half * (half - _sideA) * (half - _sideB) * (half - _sideC));
+        }
+
+        public override string ToString()
+        {
+            return $"[Triangle {this.Name}]: "
+                 + $"{this.CalculateSquare()} {MEASURE}";
         }
     }
 }

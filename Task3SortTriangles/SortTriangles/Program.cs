@@ -12,14 +12,15 @@ namespace SortTriangles
         {
             try
             {
-                Triangle a = new Triangle("tini", 1.0, 2.0, 25.0);
+                Triangle a = new Triangle("tini", 3.0, 4.0, 5.0);
                 Console.WriteLine(a.IsExist());
                 Console.WriteLine(a.Name);
                 Console.WriteLine(a[0]);
                 Console.WriteLine(a[1]);
                 Console.WriteLine(a[2]);
                 Console.WriteLine(a.CalculatePerimeter());
-                Console.WriteLine(a.CalculateSquere());
+                Console.WriteLine(a.CalculateSquare());
+                Console.WriteLine(a.ToString());
             }
             catch (TriangleNoExistException ex)
             {
