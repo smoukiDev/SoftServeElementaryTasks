@@ -15,7 +15,12 @@ namespace FileParser
 
     class StreamParser : TextParser, IDisposable
     {
-        public string FilePath{ get; private set; }
+        public string FilePath { get; private set; }
+
+        public string TempFilePath { get; private set; }
+
+        private StreamReader textReader;
+        private StreamWriter textWriter;
 
         public bool OverwriteMode { get; set; }
 
@@ -25,6 +30,10 @@ namespace FileParser
             this.SearchValue = search;
             this.ReplaceValue = null;
             this.OverwriteMode = false;
+            this.TempFilePath = null;
+            this.textReader = null;
+            this.textWriter = null;
+
         }
 
         public StreamParser(string filePath, string search, string pattern)
@@ -33,6 +42,9 @@ namespace FileParser
             this.SearchValue = search;
             this.ReplaceValue = pattern;
             this.OverwriteMode = false;
+            this.TempFilePath = null;
+            this.textReader = null;
+            this.textWriter = null;
         }
 
         public StreamParser(string filePath, string search, string pattern, bool mode)
@@ -41,9 +53,12 @@ namespace FileParser
             this.SearchValue = search;
             this.ReplaceValue = pattern;
             this.OverwriteMode = mode;
+            this.TempFilePath = null;
+            this.textReader = null;
+            this.textWriter = null;
         }
 
-        public override int CountEnteries()
+        private void InitializeStream()
         {
             try
             {
@@ -59,26 +74,50 @@ namespace FileParser
                 throw new FileToParseNotFoundException(message + Environment.NewLine + ex.Message, ex);
             }
 
+            if (this.OverwriteMode == true)
+            {
+                this.textReader = new StreamReader(this.FilePath);
+                this.textWriter = new StreamWriter(this.FilePath);
+            }
+            else
+            {
+                this.TempFilePath = Path.GetTempFileName();
+                this.textReader = new StreamReader(this.FilePath);
+                this.textWriter = new StreamWriter(this.TempFilePath);
+            }
+
+        }
+
+        private void ReleaseStream()
+        {
+            if (this.textReader != null)
+            {
+                this.textReader.Close();
+                this.textReader = null;
+            }
+
+            if (this.textWriter != null)
+            {
+                this.textWriter.Close();
+                this.textWriter = null;
+                this.TempFilePath = null;
+            }
+        }
+
+        public override int CountEnteries()
+        {
             int result = 0;
-            try
-            {
-                using (StreamReader streamReader = new StreamReader(this.FilePath))
-                {
-                    string buffer;
-                    while ((buffer = streamReader.ReadLine()) != null)
-                    {
-                        result += Regex.Matches(buffer, this.SearchValue).Count;
-                    }
-                }
 
-                return result;
-            }
-            catch (Exception ex)
+            this.ReleaseStream();
+            this.InitializeStream();
+
+            string buffer;
+            while ((buffer = this.textReader.ReadLine()) != null)
             {
-                // Specify
-                throw new Exception();
+                result += Regex.Matches(buffer, this.SearchValue).Count;
             }
 
+            return result;
         }
 
         public override int ReplaceEnteries()
@@ -89,70 +128,41 @@ namespace FileParser
                 throw new NoReplacePatternException(message);
             }
 
-            try
-            {
-                if (new FileInfo(this.FilePath).Length == 0)
-                {
-                    string message = "File is empty";
-                    throw new FileIsEmptyException(message);
-                }
-            }
-            catch (FileNotFoundException ex)
-            {
-                string message = "Path or file name is incorect.";
-                throw new FileToParseNotFoundException(message + Environment.NewLine + ex.Message, ex);
-            }
-
             int result = 0;
 
-            // Replace?
-            try
+            this.ReleaseStream();
+            this.InitializeStream();
+
+            while (!this.textReader.EndOfStream)
             {
-                string tempFilePath = Path.GetTempFileName();
-
-                using (StreamReader streamReader = new StreamReader(this.FilePath))
-                {
-                    using (StreamWriter streamWriter = new StreamWriter(tempFilePath))
-                    {
-                        while (!streamReader.EndOfStream)
-                        {
-                            string buffer = streamReader.ReadLine();
-                            int subResult = Regex.Matches(buffer, this.SearchValue).Count;
-                            Regex analyser = new Regex(this.SearchValue);
-                            streamWriter.WriteLine(analyser.Replace(buffer, this.ReplaceValue));
-                            result += subResult;
-                        }
-                    }
-                }
-
-                if (this.OverwriteMode)
-                {
-                    string tempFileMovePath = Path.GetDirectoryName(this.FilePath) + "\\"
-                                            + Path.GetFileNameWithoutExtension(this.FilePath) + ".txt";
-                    File.Delete(this.FilePath);
-                    File.Move(tempFilePath, tempFileMovePath);
-                }
-                else
-                {
-                    string tempFileMovePath = Path.GetDirectoryName(this.FilePath) + "\\"
-                                            + Path.GetFileNameWithoutExtension(tempFilePath) + ".txt";
-                    File.Move(tempFilePath, tempFileMovePath);
-                }
-
-                if (result == 0)
-                {
-                    string message = "No matches have been detected.";
-                    throw new ZeroReplaceException(message);
-                }
-
-                return result;
+                string buffer = this.textReader.ReadLine();
+                int subResult = Regex.Matches(buffer, this.SearchValue).Count;
+                Regex analyser = new Regex(this.SearchValue);
+                this.textWriter.WriteLine(analyser.Replace(buffer, this.ReplaceValue));
+                result += subResult;
             }
-            catch (Exception ex)
+
+            if (this.OverwriteMode)
             {
-                // StreamReader Exceptions
-                string message = "Path or file name is incorect.";
-                throw new FileToParseNotFoundException(message + Environment.NewLine + ex.Message, ex);
+                string tempFileMovePath = Path.GetDirectoryName(this.FilePath) + "\\"
+                                        + Path.GetFileNameWithoutExtension(this.FilePath) + ".txt";
+                File.Delete(this.FilePath);
+                File.Move(this.TempFilePath, tempFileMovePath);
             }
+            else
+            {
+                string tempFileMovePath = Path.GetDirectoryName(this.FilePath) + "\\"
+                                        + Path.GetFileNameWithoutExtension(TempFilePath) + ".txt";
+                File.Move(this.TempFilePath, tempFileMovePath);
+            }
+
+            if (result == 0)
+            {
+                string message = "No matches have been detected.";
+                throw new ZeroReplaceException(message);
+            }
+
+            return result;
         }
 
         private bool disposed = false;
@@ -170,9 +180,13 @@ namespace FileParser
                 if (disposing)
                 {
                     // release managed resources
+                    this.FilePath = null;
+                    this.SearchValue = null;
+                    this.ReplaceValue = null;
                 }
 
                 // release unmanaged resources
+                this.ReleaseStream();
                 this.disposed = true;
             }
         }
@@ -182,6 +196,5 @@ namespace FileParser
         {
             Dispose(false);
         }
-
     }
 }
