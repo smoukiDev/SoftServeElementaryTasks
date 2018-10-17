@@ -114,19 +114,22 @@ namespace FileParser
 
         private void FindMatches(string filePath, string searchPattern)
         {
-            StreamParser streamParser = new StreamParser(filePath, searchPattern);
-            int result = streamParser.CountEnteries();
-            Console.WriteLine($"{result} matches have been detected");
+            using (StreamParser streamParser = new StreamParser(filePath, searchPattern))
+            {
+                int result = streamParser.CountEnteries();
+                Console.WriteLine($"{result} matches have been detected");
+            }
         }
 
         private void ReplaceMatches(string filePath, string searchPattern, string replacePattern)
         {
-            //? Give name of copy
-            StreamParser streamParser = new StreamParser(filePath, searchPattern, replacePattern);
-            int result = streamParser.ReplaceEnteries();
-            Console.WriteLine($"{result} matches have been replaced");
-            Console.Write("Copy of file with changes has been saved ");
-            Console.Write("to the same directory");
+            using (StreamParser streamParser = new StreamParser(filePath, searchPattern, replacePattern))
+            {
+                int result = streamParser.ReplaceEnteries();
+                Console.WriteLine($"{result} matches have been replaced");
+                Console.Write("Copy of file with changes has been saved ");
+                Console.Write($"Path: {streamParser.TempFilePath}");
+            }
         }
 
         private void ReplaceMatches(string filePath, string searchPattern, string replacePattern, string flag)
@@ -137,10 +140,12 @@ namespace FileParser
                 throw new InvalidFlagException(message);
             }
 
-            StreamParser streamParser = new StreamParser(filePath, searchPattern, replacePattern, true);
-            int result = streamParser.ReplaceEnteries();
-            Console.WriteLine($"{result} matches have been replaced");
-            Console.WriteLine("File has been overwritten.");
+            using (StreamParser streamParser = new StreamParser(filePath, searchPattern, replacePattern, true))
+            {
+                int result = streamParser.ReplaceEnteries();
+                Console.WriteLine($"{result} matches have been replaced");
+                Console.WriteLine("File has been overwritten.");
+            }
         }
 
         private class InvalidFlagException : Exception
