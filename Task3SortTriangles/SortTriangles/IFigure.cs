@@ -19,7 +19,6 @@ namespace SortTriangles
         double this[int index]
         {
             get;
-            set;
         }
     }
 }

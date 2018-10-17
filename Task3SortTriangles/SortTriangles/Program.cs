@@ -10,6 +10,23 @@ namespace SortTriangles
     {
         static void Main(string[] args)
         {
+            try
+            {
+                Triangle a = new Triangle("tini", 1.0, 2.0, 25.0);
+                Console.WriteLine(a.IsExist());
+                Console.WriteLine(a.Name);
+                Console.WriteLine(a[0]);
+                Console.WriteLine(a[1]);
+                Console.WriteLine(a[2]);
+                Console.WriteLine(a.CalculatePerimeter());
+                Console.WriteLine(a.CalculateSquere());
+            }
+            catch (TriangleNoExistException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.ReadLine();
         }
     }
 }
