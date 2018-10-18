@@ -1,17 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SortTriangles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Triangle.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
 
 namespace SortTriangles.Tests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using SortTriangles;
+    using System;
+
     [TestClass]
     public class TriangleTests
     {
-
+        // TODO: Add Documentation CalculateSquare_ThrowArgumentException
         [DataTestMethod]
         [DataRow(-3, 4, 5)]
         [DataRow(3, -4, 5)]
@@ -33,6 +33,7 @@ namespace SortTriangles.Tests
             Assert.ThrowsException<ArgumentException>(() => testTriangle.CalculatePerimeter());
         }
 
+        // TODO: Add Documentation For CalculateSquare_ReturnSquareCorrectly
         [DataTestMethod]
         [DataRow(3, 4, 5, 6)]
         [DataRow(3.75, 4.75, 5.75, 8.86)]
