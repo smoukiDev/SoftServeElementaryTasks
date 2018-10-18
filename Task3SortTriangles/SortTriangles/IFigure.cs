@@ -4,21 +4,32 @@
 
 namespace SortTriangles
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
+    /// <summary>
+    /// Provides methods and indexer which some figure could realize
+    /// </summary>
     public interface IFigure
     {
-        double CalculatePerimeter();
-
-        double CalculateSquare();
-
+        /// <summary>
+        /// An indexer prototypes that return side of figure
+        /// </summary>
+        /// <param name="index">Index of side</param>
+        /// <returns>Side by index</returns>
         double this[int index]
         {
             get;
         }
+
+        /// <summary>
+        /// A method prototypes that calculates and return perimeter of figure
+        /// </summary>
+        /// <returns>Perimeter</returns>
+        double CalculatePerimeter();
+
+        /// <summary>
+        /// A method prototypes that calculates and return square of figure
+        /// </summary>
+        /// <returns>Square</returns>
+        double CalculateSquare();
+
     }
 }
