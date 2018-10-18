@@ -90,7 +90,7 @@ namespace SortTriangles
                     return _sideC;
                 }
 
-                throw new SideOutOfRangeException("Triangles has only three side to access");
+                throw new IndexOutOfRangeException("Triangles has only three side to access");
             }
         }
 
@@ -104,7 +104,7 @@ namespace SortTriangles
             string message = $"Imposible to build triangle "
                            + $" with sides "
                            + $"{this[0]}, {this[1]}, {this[2]}";
-            throw new TriangleNoExistException(message);
+            throw new ArgumentException(message);
         }
 
         public double CalculateSquare()
