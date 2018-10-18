@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IFigure.cs" />
+    <Compile Include="BL\IFigure.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Triangle.cs" />
+    <Compile Include="BL\Triangle.cs" />
     <Compile Include="TriangleConsoleApplication.cs" />
   </ItemGroup>
   <ItemGroup>
