@@ -7,6 +7,27 @@ namespace SortTriangles
     using System;
 
     /// <summary>
+    /// Specifies indexes of trianle sides
+    /// </summary>
+    public enum SideIndex
+    {
+        /// <summary>
+        /// Index of first side
+        /// </summary>
+        SideOne,
+
+        /// <summary>
+        /// Index of second side
+        /// </summary>
+        SideTwo,
+
+        /// <summary>
+        /// Index of third side
+        /// </summary>
+        SideThree
+    }
+
+    /// <summary>
     /// Reprecents Triangle with name and measure unit
     /// </summary>
     public class Triangle : IFigure, IComparable<Triangle>
@@ -83,17 +104,17 @@ namespace SortTriangles
         {
             get
             {
-                if (index == 0)
+                if (index == (int)SideIndex.SideOne)
                 {
                     return _sideA;
                 }
 
-                if (index == 1)
+                if (index == (int)SideIndex.SideTwo)
                 {
                     return _sideB;
                 }
 
-                if (index == 2)
+                if (index == (int)SideIndex.SideThree)
                 {
                     return _sideC;
                 }
