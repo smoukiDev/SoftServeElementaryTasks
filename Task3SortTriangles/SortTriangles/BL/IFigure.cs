@@ -20,13 +20,13 @@ namespace SortTriangles
         }
 
         /// <summary>
-        /// A method prototypes that calculates and return perimeter of figure
+        /// A method prototype that calculates and return perimeter of figure
         /// </summary>
         /// <returns>Perimeter</returns>
         double CalculatePerimeter();
 
         /// <summary>
-        /// A method prototypes that calculates and return square of figure
+        /// A method prototype that calculates and return square of figure
         /// </summary>
         /// <returns>Square</returns>
         double CalculateSquare();
