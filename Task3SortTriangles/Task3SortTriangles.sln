@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortTriangles", "SortTriangles\SortTriangles.csproj", "{319BEBFE-1184-41B8-8AA3-1F2D351598D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortTrianglesTests", "SortTrianglesTests\SortTrianglesTests.csproj", "{EA4CE86B-7767-4296-A62C-5C63B60531C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{319BEBFE-1184-41B8-8AA3-1F2D351598D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{319BEBFE-1184-41B8-8AA3-1F2D351598D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{319BEBFE-1184-41B8-8AA3-1F2D351598D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA4CE86B-7767-4296-A62C-5C63B60531C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA4CE86B-7767-4296-A62C-5C63B60531C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA4CE86B-7767-4296-A62C-5C63B60531C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA4CE86B-7767-4296-A62C-5C63B60531C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
