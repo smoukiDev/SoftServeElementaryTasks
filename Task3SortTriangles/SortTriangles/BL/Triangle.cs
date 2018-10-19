@@ -82,7 +82,7 @@ namespace SortTriangles
                 _sideC = sideC;
             }
 
-            this.Measure = measure ?? "sm";
+            this.Measure = measure ?? "m";
         }
 
         /// <summary>
@@ -100,6 +100,7 @@ namespace SortTriangles
         /// </summary>
         /// <param name="index">Index of side</param>
         /// <returns>Side of triangle</returns>
+        /// <exception cref="IndexOutOfRangeException">Incorrect print format</exception>
         public double this[int index]
         {
             get
@@ -147,6 +148,7 @@ namespace SortTriangles
         /// Calculates a perimeter of the trianle
         /// </summary>
         /// <returns>Perimeter of triangle</returns>
+        /// <exception cref="ArgumentException">Incorrect print format</exception>
         public double CalculatePerimeter()
         {
             if (this.IsExist())
@@ -164,6 +166,7 @@ namespace SortTriangles
         /// Calculates a square of the trianle
         /// </summary>
         /// <returns>Square of triangle</returns>
+        /// <exception cref="ArgumentException">Incorrect print format</exception>
         public double CalculateSquare()
         {
             double half = this.CalculatePerimeter() / 2;
