@@ -10,9 +10,34 @@
 
     class TriangleConsoleApplication : IUserGuide
     {
+        private List<Triangle> _triangles = null;
         private static readonly string SEPARATE_LINE = new string('=', 70);
         private const int NUMBER_OF_ARGS = 4;
         private const string ARGUMENT_EXCEPTION_MESSAGE = "Incorrect print format";
+        private const string ARGUMENT_NULL_EXCEPTION_MESSAGE = "No triangles have been added";
+
+        public void PrintTriangles()
+        {
+            if (_triangles == null)
+            {
+                throw new ArgumentNullException(ARGUMENT_NULL_EXCEPTION_MESSAGE);
+            }
+
+            _triangles.Sort();
+
+            Console.Write(SEPARATE_LINE);
+            Console.Write("Triangle list:");
+            Console.Write(SEPARATE_LINE);
+            Console.Write(Environment.NewLine);
+
+            foreach (Triangle triangle in _triangles)
+            {
+                Console.Write("1.");
+                Console.Write(triangle.ToString());
+                Console.Write(Environment.NewLine);
+            }
+
+        }
 
         public void Run()
         {
