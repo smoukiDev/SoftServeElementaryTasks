@@ -12,15 +12,45 @@ namespace GameBoard.Bisuness_Logic.Tests
     public class BoardTests
     {
         [TestMethod]
-        public void ResetBoardTest()
+        [DataRow(0, 0)]
+        [DataRow(-8, 8)]
+        [DataRow(8, -8)]
+        [DataRow(-8, -8)]
+        public void ResetBoardTest_ThrowsArgumentException(int width, int height)
         {
-            Assert.Fail();
+            // Arrange
+            Board board = new Board();
+            // Act
+
+            // Arrange
+            Assert.ThrowsException<ArgumentException>(() => board.ResetBoard(width, height, true));
         }
 
         [TestMethod]
-        public void BuildBoardTest()
+        [DataRow(8, 8)]
+        [DataRow(10, 25)]
+        public void ResetBoard_UpdateInstancePropertiesSuccessfully(int width, int height)
         {
-            Assert.Fail();
+            /// Arrange
+            Board board = new Board();
+
+            /// Act 
+            try
+            {
+                board.ResetBoard(width, height, true);
+            }
+            /// Assert 
+            catch (ArgumentException)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        [DataRow(4, 4, false)]
+        public void BuildBoardTest(int width, int height)
+        {
+            
         }
 
         [TestMethod]
