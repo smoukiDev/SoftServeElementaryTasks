@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bisuness Logic\Board.cs" />
     <Compile Include="Bisuness Logic\Cell.cs" />
+    <Compile Include="Bisuness Logic\IBoard.cs" />
     <Compile Include="Bisuness Logic\ICell.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
