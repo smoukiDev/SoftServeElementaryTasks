@@ -1,17 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EnvelopEnclosure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Envelop.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
 
 namespace EnvelopEnclosure.Tests
 {
+    using EnvelopEnclosure;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;   
+    using System;
+
     [TestClass]
     public class EnvelopTests
     {
-
         [TestMethod]
         [DataRow(-10, 4.5)]
         [DataRow(4.5, -10)]
