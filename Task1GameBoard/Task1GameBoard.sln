@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBoard", "GameBoard\GameBoard.csproj", "{769EC465-B420-48E3-BD38-6CCD74076412}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBoardTests", "GameBoardTests\GameBoardTests.csproj", "{7C0C90A6-25AF-49EC-A8CA-F9DC3663161C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{769EC465-B420-48E3-BD38-6CCD74076412}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{769EC465-B420-48E3-BD38-6CCD74076412}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{769EC465-B420-48E3-BD38-6CCD74076412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0C90A6-25AF-49EC-A8CA-F9DC3663161C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0C90A6-25AF-49EC-A8CA-F9DC3663161C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0C90A6-25AF-49EC-A8CA-F9DC3663161C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0C90A6-25AF-49EC-A8CA-F9DC3663161C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
