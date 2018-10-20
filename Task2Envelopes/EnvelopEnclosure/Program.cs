@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Program.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
 
 namespace EnvelopEnclosure
 {
-    class Program
+    using EnvelopEnclosure.UserInterface;
+
+    /// <summary>
+    /// Provides appliction entery point
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            EnvelopConsoleApplication app = new EnvelopConsoleApplication();
+            app.Run();
         }
     }
 }
