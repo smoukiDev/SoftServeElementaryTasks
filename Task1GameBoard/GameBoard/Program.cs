@@ -1,41 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameBoard.Bisuness_Logic;
+﻿// <copyright file="Program.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
 
 namespace GameBoard
 {
-    class Program
+    using GameBoard.User_Interface;
+
+    /// <summary>
+    /// Provides entery point to application
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Serves as entery point to application
+        /// </summary>
+        /// <param name="args">Console input arguments</param>
+        private static void Main(string[] args)
         {
-            Board gb = new Board(4, 4, false);
-            gb.BuildBoard();
-
-            for (int i = 0; i < gb.Height; i++)
-            {
-                for (int j = 0; j < gb.Width; j++)
-                {
-                    if (gb.BoardSurface[i, j].Color == CellColor.White)
-                    {
-                        Console.Write("0");
-                    }
-
-                    if (gb.BoardSurface[i, j].Color == CellColor.Black)
-                    {
-                        Console.Write("*");
-                    }
-                }
-
-                Console.Write(Environment.NewLine);
-            }
-
-            Console.WriteLine(gb[4, 4].ToString());
-            Console.WriteLine(gb[1, 1].ToString());
-            Console.WriteLine(gb[1, 2].ToString());
-            Console.ReadLine();
+            GameBoardConsoleApplication application = new GameBoardConsoleApplication();
+            application.Run(args);
         }
     }
 }
