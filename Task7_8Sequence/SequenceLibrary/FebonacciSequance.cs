@@ -1,4 +1,4 @@
-﻿// <copyright file="FibonacciSequance.cs" company="Serhii Maksymchuk">
+﻿// <copyright file="FebonacciSequance.cs" company="Serhii Maksymchuk">
 // Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
 // </copyright>
 
