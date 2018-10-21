@@ -6,9 +6,6 @@ namespace SequencesLib
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Reprecents sequence of Fibonacci numbers as 0,1,1,2,3...
