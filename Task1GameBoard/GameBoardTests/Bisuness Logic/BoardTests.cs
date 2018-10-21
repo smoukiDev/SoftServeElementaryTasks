@@ -47,10 +47,63 @@ namespace GameBoard.Bisuness_Logic.Tests
         }
 
         [TestMethod]
-        [DataRow(4, 4, false)]
-        public void BuildBoardTest(int width, int height)
+        public void BuildBoardTest_FirstCellDark()
         {
-            
+            // Arrange
+            int width = 4;
+            int height = 4;
+            bool isFirstCellWhite = false;
+            Board board = new Board(width, height, isFirstCellWhite);
+            board.BuildBoard();
+            Cell[,] actualBoardSurface = board.BoardSurface;
+
+            #region Expected BoardSurface Initialization
+
+            Cell[,] expectedBoardSurface = new Cell[width, height];
+            // Row One of expected board
+            expectedBoardSurface[0, 0] = new Cell(CellColor.Black);
+            expectedBoardSurface[0, 1] = new Cell(CellColor.White);
+            expectedBoardSurface[0, 2] = new Cell(CellColor.Black);
+            expectedBoardSurface[0, 3] = new Cell(CellColor.White);
+            // Row Two of expected board
+            expectedBoardSurface[1, 0] = new Cell(CellColor.White);
+            expectedBoardSurface[1, 1] = new Cell(CellColor.Black);
+            expectedBoardSurface[1, 2] = new Cell(CellColor.White);
+            expectedBoardSurface[1, 3] = new Cell(CellColor.Black);
+            // Row Three of expected board
+            expectedBoardSurface[2, 0] = new Cell(CellColor.Black);
+            expectedBoardSurface[2, 1] = new Cell(CellColor.White);
+            expectedBoardSurface[2, 2] = new Cell(CellColor.Black);
+            expectedBoardSurface[2, 3] = new Cell(CellColor.White);
+            // Row Four of expected board
+            expectedBoardSurface[3, 0] = new Cell(CellColor.White);
+            expectedBoardSurface[3, 1] = new Cell(CellColor.Black);
+            expectedBoardSurface[3, 2] = new Cell(CellColor.White);
+            expectedBoardSurface[3, 3] = new Cell(CellColor.Black);
+
+            #endregion
+
+            bool actual = false;
+            bool expected = true;
+
+            // Act
+            for (int heightIndex = 0; height < board.Height; height++)
+            {
+                for (int widthIndex = 0; widthIndex < board.Width; widthIndex++)
+                {
+                    if(actualBoardSurface[heightIndex, widthIndex].Color == expectedBoardSurface[heightIndex, widthIndex].Color)
+                    {
+                        actual = true;
+                    }
+                    else
+                    {
+                        actual = false;
+                    }
+                }
+            }
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
