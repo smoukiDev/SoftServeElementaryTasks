@@ -11,7 +11,7 @@ namespace FileParser
     /// <summary>
     /// Represents functionality of replacement strings in text file
     /// </summary>
-    public class TextFileSimpleReplacementParser : IParse
+    public class TextFileSimpleReplacementParser : IParse, IDisposable
     {
         private const string FILE_EMPTY_MESSAGE = "File is empty";
         private const string FILE_NOT_FOUND_MESSAGE = "Path or file name is incorect.";
