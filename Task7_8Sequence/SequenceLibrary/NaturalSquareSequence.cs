@@ -47,11 +47,6 @@ namespace SequencesLib
             return new NaturalSquareSequence(squareLimit);
         }
 
-        public IEnumerator<int> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Iterator return natural numbers with square less then SquareLimit
         /// </summary>
