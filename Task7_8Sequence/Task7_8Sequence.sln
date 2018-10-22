@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequenceLibrary", "SequenceLibrary\SequenceLibrary.csproj", "{E795BE30-9B68-425E-916B-043389CEBF62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequenceLibraryTests", "SequenceLibraryTests\SequenceLibraryTests.csproj", "{9DBE1941-AB2D-4124-A3A4-8D38DCA009A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FibonacciConsoleUI", "FibonacciConsoleUI\FibonacciConsoleUI.csproj", "{54B2C43E-C73D-466E-B7F8-AC78A970A5C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{E795BE30-9B68-425E-916B-043389CEBF62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E795BE30-9B68-425E-916B-043389CEBF62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E795BE30-9B68-425E-916B-043389CEBF62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DBE1941-AB2D-4124-A3A4-8D38DCA009A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DBE1941-AB2D-4124-A3A4-8D38DCA009A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DBE1941-AB2D-4124-A3A4-8D38DCA009A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DBE1941-AB2D-4124-A3A4-8D38DCA009A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54B2C43E-C73D-466E-B7F8-AC78A970A5C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54B2C43E-C73D-466E-B7F8-AC78A970A5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54B2C43E-C73D-466E-B7F8-AC78A970A5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54B2C43E-C73D-466E-B7F8-AC78A970A5C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

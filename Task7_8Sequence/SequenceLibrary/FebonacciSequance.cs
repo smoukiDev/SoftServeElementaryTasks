@@ -49,19 +49,11 @@ namespace SequencesLib
         /// Up and down limits should be
         /// greater than zero or equal to
         /// </exception>
-        /// <exception cref="OverflowException">
-        /// Up Limit out of possible values of integer type
-        /// </exception>
         public static FibonacciSequance Create(int downLimit, int upLimit)
         {
             if (downLimit < 0 || upLimit < 0)
             {
                 throw new ArgumentException("Up and down limits should be greater than zero or equal to.");
-            }
-
-            if (upLimit > int.MaxValue)
-            {
-                throw new OverflowException("Up Limit out of possible values of integer type");
             }
 
             return new FibonacciSequance(downLimit, upLimit);
@@ -75,16 +67,81 @@ namespace SequencesLib
         {
             int first = 0;
             int second = 1;
+            bool isFirst = false;
+            bool isSecond = false;
 
-            while (second <= this.UpLimit)
+            if (this.DownLimit == first)
             {
-                int temp = second;
-                second = first + second;
-                first = temp;
-
-                if (second >= this.DownLimit)
+                while (second < this.UpLimit)
                 {
-                    yield return second;
+                    if (first <= this.DownLimit && isFirst != true)
+                    {
+                        yield return first;
+                        isFirst = true;
+                    }
+                    else
+                    {
+                        isFirst = true;
+                    }
+
+                    if (second <= this.DownLimit + second && isSecond != true)
+                    {
+                        yield return second;
+                        isSecond = true;
+                    }
+                    else
+                    {
+                        isSecond = true;
+                    }
+
+                    int temp = second;
+                    second = first + second;
+                    first = temp;
+
+                    if (second >= this.DownLimit)
+                    {
+                        yield return second;
+                    }
+                }
+            }
+
+            if (this.DownLimit == second)
+            {
+                while (second < this.UpLimit)
+                {
+                    if (second <= this.DownLimit + second && isSecond != true)
+                    {
+                        yield return second;
+                        isSecond = true;
+                    }
+                    else
+                    {
+                        isSecond = true;
+                    }
+
+                    int temp = second;
+                    second = first + second;
+                    first = temp;
+
+                    if (second >= this.DownLimit)
+                    {
+                        yield return second;
+                    }
+                }
+            }
+
+            if (this.DownLimit > second)
+            {
+                while (second < this.UpLimit)
+                {
+                    int temp = second;
+                    second = first + second;
+                    first = temp;
+
+                    if (second >= this.DownLimit)
+                    {
+                        yield return second;
+                    }
                 }
             }
         }

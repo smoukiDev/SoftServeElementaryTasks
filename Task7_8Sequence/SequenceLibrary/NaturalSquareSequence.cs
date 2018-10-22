@@ -5,6 +5,7 @@
 namespace SequencesLib
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
 
     /// <summary>
@@ -36,7 +37,6 @@ namespace SequencesLib
         /// <param name="squareLimit">Square of number limit</param>
         /// <returns>Instance of <see cref="NaturalSquareSequence"/></returns>
         /// <exception cref="ArgumentException">Square Limit should be greater than zero</exception>
-        /// <exception cref="OverflowException">Square Limit out of possible values of integer type</exception>
         public static NaturalSquareSequence Create(int squareLimit)
         {
             if (squareLimit <= 0)
@@ -44,12 +44,12 @@ namespace SequencesLib
                 throw new ArgumentException("Square Limit should be greater than zero");
             }
 
-            if (squareLimit > int.MaxValue)
-            {
-                throw new OverflowException("Square Limit out of possible values of integer type");
-            }
-
             return new NaturalSquareSequence(squareLimit);
+        }
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
