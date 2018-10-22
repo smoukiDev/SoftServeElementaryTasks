@@ -16,8 +16,8 @@ namespace FileParser
     {
         static void Main(string[] args)
         {
-            FileParserConsoleApplication application = new FileParserConsoleApplication();
-            application.Run(args);
+            //FileParserConsoleApplication application = new FileParserConsoleApplication();
+            //application.Run(args);
         }
     }
 }

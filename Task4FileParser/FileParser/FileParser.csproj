@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IParse.cs" />
+    <Compile Include="TextFileSimpleReplacementParser.cs" />
     <Compile Include="StreamParserExceptions\FileIsEmptyException.cs" />
     <Compile Include="FileParserConsoleApplication.cs" />
     <Compile Include="StreamParserExceptions\FileToParseNotFoundException.cs" />
