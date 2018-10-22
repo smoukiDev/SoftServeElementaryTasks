@@ -22,7 +22,7 @@ namespace FileParser
         private StreamReader textReader;
         private StreamWriter textWriter;
 
-        public bool OverwriteMode { get; set; }
+        public bool OverwriteMode { get; private set; }
 
         public StreamParser(string filePath, string search)
         {
@@ -74,18 +74,9 @@ namespace FileParser
                 throw new FileToParseNotFoundException(message + Environment.NewLine + ex.Message, ex);
             }
 
-            if (this.OverwriteMode == true)
-            {
-                this.textReader = new StreamReader(this.FilePath);
-                this.textWriter = new StreamWriter(this.FilePath);
-            }
-            else
-            {
-                this.TempFilePath = Path.GetTempFileName();
-                this.textReader = new StreamReader(this.FilePath);
-                this.textWriter = new StreamWriter(this.TempFilePath);
-            }
-
+            this.TempFilePath = Path.GetTempFileName();
+            this.textReader = new StreamReader(this.FilePath);
+            this.textWriter = new StreamWriter(this.TempFilePath);
         }
 
         private void ReleaseStream()
@@ -100,7 +91,6 @@ namespace FileParser
             {
                 this.textWriter.Close();
                 this.textWriter = null;
-                this.TempFilePath = null;
             }
         }
 
@@ -130,7 +120,6 @@ namespace FileParser
 
             int result = 0;
 
-            this.ReleaseStream();
             this.InitializeStream();
 
             while (!this.textReader.EndOfStream)
@@ -142,6 +131,8 @@ namespace FileParser
                 result += subResult;
             }
 
+            this.ReleaseStream();
+
             if (this.OverwriteMode)
             {
                 string tempFileMovePath = Path.GetDirectoryName(this.FilePath) + "\\"
@@ -152,7 +143,7 @@ namespace FileParser
             else
             {
                 string tempFileMovePath = Path.GetDirectoryName(this.FilePath) + "\\"
-                                        + Path.GetFileNameWithoutExtension(TempFilePath) + ".txt";
+                                        + Path.GetFileNameWithoutExtension(this.TempFilePath) + ".txt";
                 File.Move(this.TempFilePath, tempFileMovePath);
             }
 
@@ -183,6 +174,7 @@ namespace FileParser
                     this.FilePath = null;
                     this.SearchValue = null;
                     this.ReplaceValue = null;
+                    this.TempFilePath = null;
                 }
 
                 // release unmanaged resources
@@ -191,7 +183,7 @@ namespace FileParser
             }
         }
 
-        // Деструктор
+        // Destructor
         ~StreamParser()
         {
             Dispose(false);
