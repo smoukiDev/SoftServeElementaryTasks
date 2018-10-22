@@ -49,11 +49,19 @@ namespace SequencesLib
         /// Up and down limits should be
         /// greater than zero or equal to
         /// </exception>
+        /// <exception cref="OverflowException">
+        /// Up Limit out of possible values of integer type
+        /// </exception>
         public static FibonacciSequance Create(int downLimit, int upLimit)
         {
             if (downLimit < 0 || upLimit < 0)
             {
                 throw new ArgumentException("Up and down limits should be greater than zero or equal to.");
+            }
+
+            if (upLimit > int.MaxValue)
+            {
+                throw new OverflowException("Up Limit out of possible values of integer type");
             }
 
             return new FibonacciSequance(downLimit, upLimit);
