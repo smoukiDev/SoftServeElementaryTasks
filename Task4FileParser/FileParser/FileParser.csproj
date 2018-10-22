@@ -43,18 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IParse.cs" />
-    <Compile Include="TextFileSimpleReplacementParser.cs" />
-    <Compile Include="StreamParserExceptions\FileIsEmptyException.cs" />
+    <Compile Include="Business Logic\IParse.cs" />
+    <Compile Include="Business Logic\TextFileMatchParser.cs" />
+    <Compile Include="Business Logic\TextFileReplacementParser.cs" />
+    <Compile Include="Business Logic\FileIsEmptyException.cs" />
     <Compile Include="FileParserConsoleApplication.cs" />
-    <Compile Include="StreamParserExceptions\FileToParseNotFoundException.cs" />
-    <Compile Include="StreamParserExceptions\NoReplacePatternException.cs" />
+    <Compile Include="Business Logic\FileToParseNotFoundException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StreamParser.cs" />
-    <Compile Include="TextParser.cs" />
+    <Compile Include="Old\StreamParser.cs" />
+    <Compile Include="Old\TextParser.cs" />
     <Compile Include="UserInstruction.cs" />
-    <Compile Include="StreamParserExceptions\ZeroReplaceException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

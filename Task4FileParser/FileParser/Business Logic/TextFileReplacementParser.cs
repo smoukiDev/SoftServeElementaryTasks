@@ -1,4 +1,4 @@
-﻿// <copyright file="TextFileSimpleReplacementParser.cs" company="Serhii Maksymchuk">
+﻿// <copyright file="TextFileReplacementParser.cs" company="Serhii Maksymchuk">
 // Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
 // </copyright>
 
@@ -11,9 +11,9 @@ namespace FileParser
     /// <summary>
     /// Represents functionality of replacement strings in text file
     /// </summary>
-    public class TextFileSimpleReplacementParser : IParse, IDisposable
+    public class TextFileReplacementParser : IParse, IDisposable
     {
-        private const string FILE_EMPTY_MESSAGE = "File is empty";
+        private const string FILE_EMPTY_MESSAGE = "File is empty.";
         private const string FILE_NOT_FOUND_MESSAGE = "Path or file name is incorect.";
 
         private StreamReader textReader;
@@ -30,7 +30,7 @@ namespace FileParser
         /// </param>
         /// <param name="search">String to replace</param>
         /// <param name="pattern">String replacer</param>
-        public TextFileSimpleReplacementParser(string filePath, string search, string pattern)
+        public TextFileReplacementParser(string filePath, string search, string pattern)
             : this(filePath, search, pattern, false)
         {
         }
@@ -44,7 +44,7 @@ namespace FileParser
         /// <param name="search">String to replace</param>
         /// <param name="pattern">String replacer</param>
         /// <param name="mode">Overwrite original file - true, false - make copy with changes</param>
-        public TextFileSimpleReplacementParser(string filePath, string search, string pattern, bool mode)
+        public TextFileReplacementParser(string filePath, string search, string pattern, bool mode)
         {
             this.FilePath = filePath;
             this.SearchValue = search;
@@ -58,7 +58,7 @@ namespace FileParser
         /// <summary>
         /// Finalizes an instance of the <see cref="TextFileSimpleReplacementParser"/> class.
         /// </summary>
-        ~TextFileSimpleReplacementParser()
+        ~TextFileReplacementParser()
         {
             this.Dispose(false);
         }
@@ -106,6 +106,12 @@ namespace FileParser
         /// Replaces strings are equal SearchValue on ReplaceValue
         /// </summary>
         /// <returns>Number of successful replacements</returns>
+        /// <exception cref="FileToParseNotFoundException">
+        /// Path or file name is incorect.
+        /// </exception>
+        /// <exception cref="FileIsEmptyException">
+        /// File is empty
+        /// </exception>
         public int Parse()
         {
             int result = 0;

@@ -18,6 +18,15 @@ namespace FileParser
         {
             //FileParserConsoleApplication application = new FileParserConsoleApplication();
             //application.Run(args);
+
+            string a = "D:\\kurlik.txt";
+            string b = "ula";
+            using (TextFileMatchParser parser = new TextFileMatchParser(a, b))
+            {
+                Console.WriteLine(parser.Parse());
+            }
+
+            Console.ReadLine();
         }
     }
 }

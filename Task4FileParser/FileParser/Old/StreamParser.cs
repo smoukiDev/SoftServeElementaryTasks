@@ -115,7 +115,7 @@ namespace FileParser
             if (this.ReplaceValue == null)
             {
                 string message = "String to replace on hasn't specified";
-                throw new NoReplacePatternException(message);
+                // throw new NoReplacePatternException(message);
             }
 
             int result = 0;
@@ -150,7 +150,8 @@ namespace FileParser
             if (result == 0)
             {
                 string message = "No matches have been detected.";
-                throw new ZeroReplaceException(message);
+
+                // throw new ZeroReplaceException(message);
             }
 
             return result;

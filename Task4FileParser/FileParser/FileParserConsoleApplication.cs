@@ -75,11 +75,11 @@ namespace FileParser
                 Console.WriteLine(ex.Message);
                 this.Display();
             }
-            catch (ZeroReplaceException ex)
-            {
-                Console.WriteLine(WARNING_LINE);
-                Console.WriteLine(ex.Message);
-            }
+            //catch (ZeroReplaceException ex)
+            //{
+            //    Console.WriteLine(WARNING_LINE);
+            //    Console.WriteLine(ex.Message);
+            //}
             catch (FileToParseNotFoundException ex)
             {
                 Console.WriteLine(WARNING_LINE);
