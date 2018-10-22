@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FebonacciSequance.cs" />
+    <Compile Include="FibonacciSequance.cs" />
     <Compile Include="NaturalSquareSequence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sequence{T}.cs" />
