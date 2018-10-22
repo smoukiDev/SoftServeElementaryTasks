@@ -11,7 +11,7 @@ namespace FibonacciConsoleUI
     {
         static void Main(string[] args)
         {
-            FibonacciSequance s = FibonacciSequance.Create(1, 89);
+            FibonacciSequance s = FibonacciSequance.Create(int.MaxValue - 100000, int.MaxValue);
             foreach (var item in s.GetSequence())
             {
                 Console.WriteLine(item);

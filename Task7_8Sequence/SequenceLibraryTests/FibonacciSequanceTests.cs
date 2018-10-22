@@ -73,5 +73,28 @@ namespace SequencesLib.Tests
 
             CollectionAssert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void GetSequence_ThrowsOverflowException()
+        {
+            // Arrange            
+            int downLimit = 0;
+            int upLimit = int.MaxValue;
+            FibonacciSequance sequence = FibonacciSequance.Create(downLimit, upLimit);
+            // Act
+            // Assert
+            try
+            {
+                foreach  (int element in sequence.GetSequence())
+                {
+
+                }
+                Assert.Fail();
+            }
+            catch(OverflowException)
+            {
+                
+            }
+        }
     }
 }

@@ -94,9 +94,12 @@ namespace SequencesLib
                         isSecond = true;
                     }
 
-                    int temp = second;
-                    second = first + second;
-                    first = temp;
+                    checked
+                    {
+                        int temp = second;
+                        second = first + second;
+                        first = temp;
+                    }
 
                     if (second >= this.DownLimit)
                     {
@@ -119,9 +122,12 @@ namespace SequencesLib
                         isSecond = true;
                     }
 
-                    int temp = second;
-                    second = first + second;
-                    first = temp;
+                    checked
+                    {
+                        int temp = second;
+                        second = first + second;
+                        first = temp;
+                    }
 
                     if (second >= this.DownLimit)
                     {
@@ -134,9 +140,12 @@ namespace SequencesLib
             {
                 while (second < this.UpLimit)
                 {
-                    int temp = second;
-                    second = first + second;
-                    first = temp;
+                    checked
+                    {
+                        int temp = second;
+                        second = first + second;
+                        first = temp;
+                    }
 
                     if (second >= this.DownLimit)
                     {
