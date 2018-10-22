@@ -1,21 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SequencesLib;
+﻿// <copyright file="Program.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
 
 namespace FibonacciConsoleUI
 {
-    class Program
+    using System;
+
+    /// <summary>
+    /// Contains method which is entery point to application
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Provides Entery point to application
+        /// </summary>
+        /// <param name="args">Console input arguments</param>
+        private static void Main(string[] args)
         {
-            FibonacciSequance s = FibonacciSequance.Create(int.MaxValue - 100000, int.MaxValue);
-            foreach (var item in s.GetSequence())
-            {
-                Console.WriteLine(item);
-            }
+            FibonacciConsoleApplication application = new FibonacciConsoleApplication();
+            application.Run(args);
             Console.ReadLine();
         }
     }

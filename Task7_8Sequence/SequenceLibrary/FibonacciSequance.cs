@@ -103,7 +103,14 @@ namespace SequencesLib
 
                     if (second >= this.DownLimit)
                     {
-                        yield return second;
+                        if (second <= this.UpLimit)
+                        {
+                            yield return second;
+                        }
+                        else
+                        {
+                            yield break;
+                        }
                     }
                 }
             }
@@ -131,7 +138,14 @@ namespace SequencesLib
 
                     if (second >= this.DownLimit)
                     {
-                        yield return second;
+                        if (second <= this.UpLimit)
+                        {
+                            yield return second;
+                        }
+                        else
+                        {
+                            yield break;
+                        }
                     }
                 }
             }
@@ -149,7 +163,14 @@ namespace SequencesLib
 
                     if (second >= this.DownLimit)
                     {
-                        yield return second;
+                        if (second <= this.UpLimit)
+                        {
+                            yield return second;
+                        }
+                        else
+                        {
+                            yield break;
+                        }
                     }
                 }
             }
