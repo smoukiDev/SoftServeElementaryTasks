@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILuckyTicket.cs" />
     <Compile Include="ITicketGenerator.cs" />
+    <Compile Include="LuckCounter.cs" />
+    <Compile Include="MoskovLuckCounter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />

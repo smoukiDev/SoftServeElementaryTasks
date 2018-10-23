@@ -48,6 +48,7 @@ namespace LuckyTicket
         /// <param name="downBound">Down bound of range</param>
         /// <param name="upBound">Up bound of range</param>
         /// <returns>Instance of <see cref="SixDigitTicketGenerator"/></returns>
+        /// <exception cref="ArgumentException"><see cref="ARGUMENT_EXCEPTION_MESSAGE"/></exception>
         public static SixDigitTicketGenerator Create(int downBound, int upBound)
         {
             if (downBound < MIN_TICKET || downBound > MAX_TICKET - 1)

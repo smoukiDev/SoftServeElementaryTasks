@@ -47,6 +47,7 @@ namespace LuckyTicket
         /// <param name="number">Ticket number in integer view</param>
         /// <param name="size">Ticket size</param>
         /// <returns>Instance of <see cref="Ticket"/></returns>
+        /// <exception cref="ArgumentException">Invalid number or size</exception>
         public static Ticket Create(int number, int size)
         {
             if (number.ToString().Length > size)

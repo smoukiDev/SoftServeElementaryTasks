@@ -10,30 +10,23 @@ namespace LuckyTicket
     /// </summary>
     public abstract class LuckCounter : ILuckyTicket
     {
-        private ITicketGenerator generator;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="LuckCounter"/> class
         /// </summary>
-        /// <param name="downBound">Down bound of range to search</param>
-        /// <param name="upBound">Up bound of range to search</param>
         /// <param name="generator">Generator of tickets</param>
-        public LuckCounter(int downBound, int upBound, ITicketGenerator generator)
+        public LuckCounter(ITicketGenerator generator)
         {
-            this.DownBound = downBound;
-            this.UpBound = upBound;
-            this.generator = generator;
+            this.Generator = generator;
         }
 
         /// <summary>
-        /// Gets or sets down bound of range to search
+        /// Gets or sets tickets generator
         /// </summary>
-        public int DownBound { get; protected set; }
-
-        /// <summary>
-        /// Gets or sets up bound of range to search
-        /// </summary>
-        public int UpBound { get; protected set; }
+        public ITicketGenerator Generator
+        {
+            get;
+            protected set;
+        }
 
         /// <summary>
         /// Count number of lucky tickets on specified range
