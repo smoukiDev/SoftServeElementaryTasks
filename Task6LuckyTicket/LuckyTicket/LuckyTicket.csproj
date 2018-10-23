@@ -43,15 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILuckyTicket.cs" />
-    <Compile Include="ITicketGenerator.cs" />
-    <Compile Include="LuckCounter.cs" />
-    <Compile Include="MoskovLuckCounter.cs" />
-    <Compile Include="PiterLuckCounter.cs" />
+    <Compile Include="Business Logic\ILuckyTicket.cs" />
+    <Compile Include="Business Logic\ITicketGenerator.cs" />
+    <Compile Include="Business Logic\LuckCounter.cs" />
+    <Compile Include="Business Logic\MoskovLuckCounter.cs" />
+    <Compile Include="Business Logic\PiterLuckCounter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ticket.cs" />
-    <Compile Include="SixDigitTicketGenerator.cs" />
+    <Compile Include="Business Logic\Ticket.cs" />
+    <Compile Include="Business Logic\SixDigitTicketGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

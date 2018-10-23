@@ -63,7 +63,6 @@ namespace LuckyTicket
                 evenSum += (int)char.GetNumericValue(ticket.TicketNumber[i + 1]);
             }
 
-
             return unevenSum == evenSum;
         }
     }

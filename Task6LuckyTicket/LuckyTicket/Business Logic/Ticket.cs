@@ -28,7 +28,7 @@ namespace LuckyTicket
     public class Ticket
     {
         private const string ARGUMENT_EXCEPTION_ONE = "Number can't contain more digits than size.";
-        private const string ARGUMENT_EXCEPTION_TWO = "Number can't be negative.";
+        private const string ARGUMENT_EXCEPTION_TWO = "Number or size can't be negative.";
         private const string ARGUMENT_EXCEPTION_THREE = "Size can't be zero or one";
 
         private Ticket(int number, int size)
@@ -55,7 +55,7 @@ namespace LuckyTicket
                 throw new ArgumentException(ARGUMENT_EXCEPTION_ONE);
             }
 
-            if (number < 0)
+            if (number < 0 || size < 0)
             {
                 throw new ArgumentException(ARGUMENT_EXCEPTION_TWO);
             }
