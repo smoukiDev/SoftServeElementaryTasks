@@ -12,9 +12,9 @@ namespace LuckyTicket
     public interface ITicketGenerator
     {
         /// <summary>
-        /// Gets or sets number of digits in ticket number
+        /// Gets number of digits in ticket number
         /// </summary>
-        int DigitAmount { get; set; }
+        int DigitAmount { get; }
 
         /// <summary>
         /// Iterator which returns Ticket
