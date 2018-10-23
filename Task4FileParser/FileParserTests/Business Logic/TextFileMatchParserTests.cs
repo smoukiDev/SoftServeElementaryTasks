@@ -1,25 +1,40 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FileParser;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FileParser.Tests
+﻿namespace FileParser.Tests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Diagnostics;
+    using System.IO;
+
     [TestClass]
     public class TextFileMatchParserTests
     {
         [TestMethod]
-        [DeploymentItem(@"TestFiles\FileForParserTests.txt")]
-        [DataRow("Sample", 9)]
-        public void ParseTest_ReturnMatchesCorrectly(string searchValue, int matches)
+        public void Parse_FindsEightMatches()
         {
             // Arrange
-            TextFileMatchParser parser = new TextFileMatchParser("FileForParserTests.txt", searchValue);
-            int expected = matches;
+            Debug.WriteLine(Directory.GetCurrentDirectory());
+            string targetFile = Directory.GetCurrentDirectory() + @"\TestFiles\Full.txt";
+            string searchValue = "Sample";
+            TextFileMatchParser parser = new TextFileMatchParser(targetFile, searchValue);
+            int expected = 8;
+            int actual;
+
+            // Act
+            actual = parser.Parse();
+            parser.Dispose();
+
+            // Assert
+            Assert.AreEqual(expected,actual);
+        }
+
+        [TestMethod]
+        public void Parse_FindsZeroMatches()
+        {
+            // Arrange
+            Debug.WriteLine(Directory.GetCurrentDirectory());
+            string targetFile = Directory.GetCurrentDirectory() + @"\TestFiles\Full.txt";
+            string searchValue = "sample";
+            TextFileMatchParser parser = new TextFileMatchParser(targetFile, searchValue);
+            int expected = 0;
             int actual;
 
             // Act
@@ -28,6 +43,34 @@ namespace FileParser.Tests
 
             // Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Parse_ThrowsFileToParseNotFoundException()
+        {
+            // Arrange
+            string targetFile = Directory.GetCurrentDirectory() + @"\TestFiles\NotExistFile.txt";
+            string searchValue = "Sample";
+            TextFileMatchParser parser = new TextFileMatchParser(targetFile, searchValue);
+
+            // Act
+            // Assert
+            Assert.ThrowsException<FileToParseNotFoundException>(() => parser.Parse());
+            
+        }
+
+        [TestMethod]
+        public void Parse_ThrowsFileIsEmptyException()
+        {
+            // Arrange
+            string targetFile = Directory.GetCurrentDirectory() + @"\TestFiles\Empty.txt";
+            string searchValue = "Sample";
+            TextFileMatchParser parser = new TextFileMatchParser(targetFile, searchValue);
+
+            // Act
+            // Assert
+            Assert.ThrowsException<FileIsEmptyException>(() => parser.Parse());
+
         }
     }
 }

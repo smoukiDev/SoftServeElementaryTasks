@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{71EC90C6-C670-4917-B4EE-05F7CE5D08BE}</ProjectGuid>
+    <ProjectGuid>{0455FD22-87E2-4B71-8F75-98BBD23AFAB9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FileParserTests</RootNamespace>
@@ -69,9 +69,14 @@
       <Name>FileParser</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="TestFiles\FileForParserTests.txt">
+    <Folder Include="TemporaryFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestFiles\Empty.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\Full.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
