@@ -31,17 +31,7 @@ namespace LuckyTicket
         /// <returns>Number of lucky tickets on range specified in generator</returns>
         public override int CountLuckyTickets()
         {
-            int result = 0;
-
-            foreach (Ticket ticket in this.Generator)
-            {
-                if (this.IsLucky(ticket))
-                {
-                    result++;
-                }
-            }
-
-            return result;
+            return base.CountLuckyTickets();
         }
 
         /// <summary>

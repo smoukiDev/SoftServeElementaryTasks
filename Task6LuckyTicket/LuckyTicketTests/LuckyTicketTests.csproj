@@ -56,6 +56,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Business Logic\MoskovLuckCounterTests.cs" />
+    <Compile Include="Business Logic\PiterLuckCounterTests.cs" />
     <Compile Include="Business Logic\SixDigitTicketGeneratorTests.cs" />
     <Compile Include="Business Logic\TicketTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

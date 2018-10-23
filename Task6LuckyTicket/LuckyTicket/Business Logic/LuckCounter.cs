@@ -32,7 +32,20 @@ namespace LuckyTicket
         /// Count number of lucky tickets on specified range
         /// </summary>
         /// <returns>Number of lucky tickets</returns>
-        public abstract int CountLuckyTickets();
+        public virtual int CountLuckyTickets()
+        {
+            int result = 0;
+
+            foreach (Ticket ticket in this.Generator)
+            {
+                if (this.IsLucky(ticket))
+                {
+                    result++;
+                }
+            }
+
+            return result;
+        }
 
         /// <summary>
         /// Obligates child class realize interface ILuckyTicket
