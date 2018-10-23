@@ -5,11 +5,10 @@
 namespace FileParser
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
+    /// <summary>
+    /// Provides template of user instruction
+    /// </summary>
     public abstract class UserInstruction
     {
         // default data seize memory?

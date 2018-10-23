@@ -47,13 +47,13 @@
     <Compile Include="Business Logic\TextFileMatchParser.cs" />
     <Compile Include="Business Logic\TextFileReplacementParser.cs" />
     <Compile Include="Business Logic\FileIsEmptyException.cs" />
-    <Compile Include="FileParserConsoleApplication.cs" />
+    <Compile Include="UserInterface\FileParserConsoleApplication.cs" />
     <Compile Include="Business Logic\FileToParseNotFoundException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Old\StreamParser.cs" />
     <Compile Include="Old\TextParser.cs" />
-    <Compile Include="UserInstruction.cs" />
+    <Compile Include="UserInterface\UserInstruction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -63,6 +63,11 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UserGuide\FileParserGuide.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

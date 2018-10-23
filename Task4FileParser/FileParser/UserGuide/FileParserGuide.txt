@@ -1,0 +1,18 @@
+﻿===================================================================
+FileParser Application
+===================================================================
+Application helps to parse text files.
+===================================================================
+Usage:
+
+>Get count of matches:
+ FileParser [FilePath] [SearchString
+
+>Get count of matches and replace matches 
+ without file overwrite:
+ FileParser [FilePath]  [SearchString] [ReplaceString]
+
+>Get count of matches and replace matches 
+ with file overwrite:
+ FileParser --overwrite [FilePath] [SearchString] [ReplaceString]
+ ===================================================================

@@ -4,29 +4,19 @@
 
 namespace FileParser
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
-
-    class Program
+    /// <summary>
+    /// Contains application entery point
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Provides entery point to applications
+        /// </summary>
+        /// <param name="args">Console input arguments</param>
+        private static void Main(string[] args)
         {
-            //FileParserConsoleApplication application = new FileParserConsoleApplication();
-            //application.Run(args);
-
-            string a = "D:\\kurlik.txt";
-            string b = "ula";
-            using (TextFileMatchParser parser = new TextFileMatchParser(a, b))
-            {
-                Console.WriteLine(parser.Parse());
-            }
-
-            Console.ReadLine();
+            FileParserConsoleApplication application = new FileParserConsoleApplication();
+            application.Run(args);
         }
     }
 }
