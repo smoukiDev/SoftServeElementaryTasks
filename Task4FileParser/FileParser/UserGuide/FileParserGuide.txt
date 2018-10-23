@@ -5,6 +5,8 @@ Application helps to parse text files.
 ===================================================================
 Usage:
 
+>Runs from console
+
 >Get count of matches:
  FileParser [FilePath] [SearchString
 
