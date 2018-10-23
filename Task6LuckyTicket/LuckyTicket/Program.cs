@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Program.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
 
 namespace LuckyTicket
 {
-    class Program
+    using UserInterface;
+    /// <summary>
+    /// Serves as entery point to application
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Provides entery point to application
+        /// </summary>
+        /// <param name="args">Console input arguments</param>
+        private static void Main(string[] args)
         {
-            SixDigitTicketGenerator generator = SixDigitTicketGenerator.Create(000005, 000100);
-            foreach (var item in generator)
-            {
-                Console.WriteLine(item.TicketNumber);
-            }
-
-            Console.ReadLine();
+            LuckyTicketsConsoleApplication application = new LuckyTicketsConsoleApplication();
+            application.Run();
         }
     }
 }

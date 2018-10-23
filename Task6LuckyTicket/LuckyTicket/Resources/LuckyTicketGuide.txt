@@ -1,0 +1,16 @@
+﻿==================================================================
+Welcome LuckyTickets Application
+==================================================================
+Application helps to count number of 
+lucky tickets on specified range
+==================================================================
+Usage:
+
+>Enter path to text file with algorithm marker inside:
+ [Moskov] - sum of right half are equal sum of left half or ticket
+ [Piter] - sum of even digits are equal sum of uneven digits
+
+>Specify range to count tickets on
+ [######] - six-digit minimal ticket of range
+ [######] - six-digit maximum ticket of range
+==================================================================
