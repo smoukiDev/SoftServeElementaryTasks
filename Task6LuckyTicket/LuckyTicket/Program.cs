@@ -10,6 +10,13 @@ namespace LuckyTicket
     {
         static void Main(string[] args)
         {
+            SixDigitTicketGenerator generator = SixDigitTicketGenerator.Create(000005, 000100);
+            foreach (var item in generator)
+            {
+                Console.WriteLine(item.TicketNumber);
+            }
+
+            Console.ReadLine();
         }
     }
 }
