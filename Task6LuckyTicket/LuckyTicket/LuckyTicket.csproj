@@ -47,6 +47,7 @@
     <Compile Include="ITicketGenerator.cs" />
     <Compile Include="LuckCounter.cs" />
     <Compile Include="MoskovLuckCounter.cs" />
+    <Compile Include="PiterLuckCounter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />
