@@ -6,9 +6,9 @@ namespace LuckyTicket
 {
     /// <summary>
     /// Represent lucky ticket counter
-    /// using Piter algorithm
+    /// using Piter algorithm.
     /// Even digits sum is equal
-    /// Uneven 3 digits sum
+    /// uneven 3 digits sum.
     /// </summary>
     public class PiterLuckCounter : LuckCounter
     {
@@ -23,12 +23,14 @@ namespace LuckyTicket
 
         /// <summary>
         /// Count number of lucky tickets on range
-        /// specified in generator
-        /// using Piter algorithm
+        /// specified by generator
+        /// using Piter algorithm.
         /// Even digits sum is equal
-        /// Uneven digits sum
+        /// uneven digits sum.
         /// </summary>
-        /// <returns>Number of lucky tickets on range specified in generator</returns>
+        /// <returns>
+        /// Number of lucky tickets on range specified in generator.
+        /// </returns>
         public override int CountLuckyTickets()
         {
             return base.CountLuckyTickets();
@@ -36,12 +38,14 @@ namespace LuckyTicket
 
         /// <summary>
         /// Identifies whether ticket is lucky
-        /// using Piter algorithm
+        /// using Piter algorithm.
         /// Even digits sum is equal
-        /// Uneven digits sum
+        /// uneven digits sum.
         /// </summary>
         /// <param name="ticket">Ticket</param>
-        /// <returns>Lucky ticket - true, false - if not</returns>
+        /// <returns>
+        /// Returns true for lucky ticket and false if vice versa.
+        /// </returns>
         public override bool IsLucky(Ticket ticket)
         {
             int unevenSum = 0;

@@ -1,13 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LuckyTicket;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file=SixDigitTicketGeneratorTests.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
 
 namespace LuckyTicket.Tests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using LuckyTicket;
+    using System;
+    using System.Collections.Generic;
+
     [TestClass()]
     public class SixDigitTicketGeneratorTests
     {

@@ -29,7 +29,8 @@ namespace LuckyTicket
         }
 
         /// <summary>
-        /// Count number of lucky tickets on specified range
+        /// Count number of lucky tickets
+        /// on range specified by generator
         /// </summary>
         /// <returns>Number of lucky tickets</returns>
         public virtual int CountLuckyTickets()
@@ -51,7 +52,9 @@ namespace LuckyTicket
         /// Obligates child class realize interface ILuckyTicket
         /// </summary>
         /// <param name="ticket">Ticket</param>
-        /// <returns>Lucky ticket - true, false if not</returns>
+        /// <returns>
+        /// Returns true for lucky ticket and false if vice versa
+        /// </returns>
         public abstract bool IsLucky(Ticket ticket);
     }
 }

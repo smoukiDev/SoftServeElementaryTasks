@@ -5,6 +5,7 @@
 namespace LuckyTicket
 {
     using UserInterface;
+    
     /// <summary>
     /// Serves as entery point to application
     /// </summary>

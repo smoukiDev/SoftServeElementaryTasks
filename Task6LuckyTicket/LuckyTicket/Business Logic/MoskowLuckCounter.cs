@@ -1,4 +1,4 @@
-﻿// <copyright file="MoskovLuckCounter.cs" company="Serhii Maksymchuk">
+﻿// <copyright file="MoskowLuckCounter.cs" company="Serhii Maksymchuk">
 // Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
 // </copyright>
 
@@ -6,29 +6,29 @@ namespace LuckyTicket
 {
     /// <summary>
     /// Represent lucky ticket counter
-    /// using Moskov algorithm
+    /// using Moskow algorithm.
     /// First 3 digits sum is equal
-    /// Last 3 digits sum
+    /// last 3 digits sum.
     /// </summary>
-    public class MoskovLuckCounter : LuckCounter
+    public class MoskowLuckCounter : LuckCounter
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MoskovLuckCounter"/> class.
+        /// Initializes a new instance of the <see cref="MoskowLuckCounter"/> class.
         /// </summary>
         /// <param name="generator">Ticket generator</param>
-        public MoskovLuckCounter(ITicketGenerator generator)
+        public MoskowLuckCounter(ITicketGenerator generator)
             : base(generator)
         {
         }
 
         /// <summary>
         /// Count number of lucky tickets on range
-        /// specified in generator
-        /// using Moskov algorithm
+        /// specified by generator
+        /// using Moskow algorithm.
         /// First 3 digits sum is equal
-        /// Last 3 digits sum
+        /// last 3 digits sum.
         /// </summary>
-        /// <returns>Number of lucky tickets on range specified in generator</returns>
+        /// <returns>Number of lucky tickets on range specified by generator.</returns>
         public override int CountLuckyTickets()
         {
             return base.CountLuckyTickets();
@@ -36,12 +36,14 @@ namespace LuckyTicket
 
         /// <summary>
         /// Identifies whether ticket is lucky
-        /// using Moskov algorithm
+        /// using Moskow algorithm.
         /// First 3 digits sum is equal
-        /// Last 3 digits sum
+        /// last 3 digits sum.
         /// </summary>
         /// <param name="ticket">Ticket</param>
-        /// <returns>Lucky ticket - true, false - if not</returns>
+        /// <returns>
+        /// Returns true for lucky ticket and false if vice versa.
+        /// </returns>
         public override bool IsLucky(Ticket ticket)
         {
             int leftThreeSum = 0;

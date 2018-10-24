@@ -14,11 +14,14 @@ namespace LuckyTicket.UserInterface
     {
         private static readonly string SEPARATE_LINE = new string('=', 60);
         private static readonly string WARNING_LINE = new string('!', 60);
+
         private const string USER_GUIDE_LOSTED = "User Guide not found.";
         private const string FILE_WITH_MARKER_LOSTED = "File with marker not found.";
         private const string INCORRECT_MARKER = "Incorrect alghorithm marker.";
         private const string INCORRECT_BOUNDARIES = "Incorrect values of boundaries has entered.";
+
         private const byte NUMBER_OF_ARGS = 3;
+
         private const string MOSKOW_MARKER = "Moskow";
         private const string PITER_MARKER = "Piter";
 
@@ -39,9 +42,12 @@ namespace LuckyTicket.UserInterface
                     }
                 }
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException ex)
             {
-                throw new FileNotFoundException(USER_GUIDE_LOSTED);
+                Console.WriteLine(WARNING_LINE);
+                Console.WriteLine(USER_GUIDE_LOSTED);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(WARNING_LINE);
             }
 
             Console.WriteLine("Press Enter...");
@@ -55,12 +61,16 @@ namespace LuckyTicket.UserInterface
         public void Run()
         {
             this.DisplayGuide();
+
             string[] args = this.GetInput();
+
             try
             {
                 string key = string.Empty;
                 this.ReadAlgorithmMarker(args[0], out key);
+
                 int result = 0;
+
                 switch (key)
                 {
                     case PITER_MARKER:
@@ -101,6 +111,7 @@ namespace LuckyTicket.UserInterface
         private string[] GetInput()
         {
             string[] args = new string[NUMBER_OF_ARGS];
+
             Console.WriteLine(SEPARATE_LINE);
             Console.WriteLine("Enter path to file with algorithm marker:");
             args[0] = Console.ReadLine();
@@ -118,6 +129,7 @@ namespace LuckyTicket.UserInterface
         private void ReadAlgorithmMarker(string path, out string marker)
         {
             marker = string.Empty;
+
             try
             {
                 using (StreamReader reader = new StreamReader(path))
@@ -125,7 +137,7 @@ namespace LuckyTicket.UserInterface
                     marker = reader.ReadLine();
                 }
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException)
             {
                 throw new FileNotFoundException(FILE_WITH_MARKER_LOSTED);
             }
@@ -190,7 +202,7 @@ namespace LuckyTicket.UserInterface
             try
             {
                 SixDigitTicketGenerator generator = SixDigitTicketGenerator.Create(leftTicket, rightTicket);
-                MoskovLuckCounter counter = new MoskovLuckCounter(generator);
+                MoskowLuckCounter counter = new MoskowLuckCounter(generator);
                 result = counter.CountLuckyTickets();
             }
             catch (ArgumentException)

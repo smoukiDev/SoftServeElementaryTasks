@@ -13,8 +13,10 @@ namespace LuckyTicket
         /// <summary>
         /// Prototype of method, which indicates wheter Ticket is lucky
         /// </summary>
-        /// <param name="ticket">TTicket</param>
-        /// <returns>Result true - for lucky tickets, false - if not</returns>
+        /// <param name="ticket">Ticket</param>
+        /// <returns>
+        /// Returns true - for lucky tickets, false if vice versa
+        /// </returns>
         bool IsLucky(Ticket ticket);
     }
 }

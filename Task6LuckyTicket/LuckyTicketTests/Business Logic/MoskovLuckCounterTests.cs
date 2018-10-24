@@ -1,4 +1,8 @@
-﻿namespace LuckyTicket.Tests
+﻿// <copyright file="MoskovLuckCounterTests.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
+
+namespace LuckyTicket.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,7 +22,7 @@
             int upBound = 000003;
             SixDigitTicketGenerator generator = SixDigitTicketGenerator.Create(downBound, upBound);
             Ticket singleTicket = Ticket.Create(number, size);
-            MoskovLuckCounter counter = new MoskovLuckCounter(generator);
+            MoskowLuckCounter counter = new MoskowLuckCounter(generator);
 
             bool expected = true;
             bool actual;
@@ -41,7 +45,7 @@
             int upBound = 000003;
             SixDigitTicketGenerator generator = SixDigitTicketGenerator.Create(downBound, upBound);
             Ticket singleTicket = Ticket.Create(number, size);
-            MoskovLuckCounter counter = new MoskovLuckCounter(generator);
+            MoskowLuckCounter counter = new MoskowLuckCounter(generator);
 
             bool expected = false;
             bool actual;
@@ -60,7 +64,7 @@
             int downBound = 100000;
             int upBound = 100100;
             SixDigitTicketGenerator generator = SixDigitTicketGenerator.Create(downBound, upBound);
-            MoskovLuckCounter counter = new MoskovLuckCounter(generator);
+            MoskowLuckCounter counter = new MoskowLuckCounter(generator);
 
             int expected = 3;
             int actual;
@@ -79,7 +83,7 @@
             int downBound = 000100;
             int upBound = 000107;
             SixDigitTicketGenerator generator = SixDigitTicketGenerator.Create(downBound, upBound);
-            MoskovLuckCounter counter = new MoskovLuckCounter(generator);
+            MoskowLuckCounter counter = new MoskowLuckCounter(generator);
 
             int expected = 0;
             int actual;

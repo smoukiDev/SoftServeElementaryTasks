@@ -17,9 +17,6 @@ namespace LuckyTicket
         private const int MAX_TICKET = 999999;
         private const int MIN_TICKET = 000001;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SixDigitTicketGenerator"/> class.
-        /// </summary>
         private SixDigitTicketGenerator(int downBound, int upBound)
         {
             this.DigitAmount = SIZE;
@@ -48,7 +45,9 @@ namespace LuckyTicket
         /// <param name="downBound">Down bound of range</param>
         /// <param name="upBound">Up bound of range</param>
         /// <returns>Instance of <see cref="SixDigitTicketGenerator"/></returns>
-        /// <exception cref="ArgumentException"><see cref="ARGUMENT_EXCEPTION_MESSAGE"/></exception>
+        /// <exception cref="ArgumentException">
+        /// Incorrect values for range
+        /// </exception>
         public static SixDigitTicketGenerator Create(int downBound, int upBound)
         {
             if (downBound < MIN_TICKET || downBound > MAX_TICKET - 1)

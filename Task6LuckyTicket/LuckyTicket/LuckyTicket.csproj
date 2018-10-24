@@ -46,7 +46,7 @@
     <Compile Include="Business Logic\ILuckyTicket.cs" />
     <Compile Include="Business Logic\ITicketGenerator.cs" />
     <Compile Include="Business Logic\LuckCounter.cs" />
-    <Compile Include="Business Logic\MoskovLuckCounter.cs" />
+    <Compile Include="Business Logic\MoskowLuckCounter.cs" />
     <Compile Include="Business Logic\PiterLuckCounter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,8 @@
-﻿namespace LuckyTicket.Tests
+﻿// <copyright file="PiterLuckCounterTests.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
+
+namespace LuckyTicket.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
