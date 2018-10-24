@@ -13,8 +13,8 @@ namespace EnvelopEnclosure
     {
         private static void Main(string[] args)
         {
-            EnvelopConsoleApplication app = new EnvelopConsoleApplication();
-            app.Run();
+            EnvelopConsoleApplication application = new EnvelopConsoleApplication();
+            application.Run();
         }
     }
 }

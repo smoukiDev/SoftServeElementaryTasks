@@ -20,12 +20,20 @@ namespace EnvelopEnclosure
         /// <summary>
         /// Gets envelop first side
         /// </summary>
-        public double SideA { get; private set; }
+        public double SideA
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Gets envelop second side
         /// </summary>
-        public double SideB { get; private set; }
+        public double SideB
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Compares Envelops by sides
@@ -35,17 +43,19 @@ namespace EnvelopEnclosure
         /// <returns>true if envelop one larger envelop two and false if vice versa</returns>
         public static bool operator >(Envelop one, Envelop two)
         {
+            bool result = false;
+
             if (one.SideA > two.SideA && one.SideB > one.SideB)
             {
-                return true;
+                result = true;
             }
 
             if (one.SideA > two.SideB && one.SideB > two.SideA)
             {
-                return true;
+                result = true;
             }
 
-            return false;
+            return result;
         }
 
         /// <summary>
@@ -56,17 +66,65 @@ namespace EnvelopEnclosure
         /// <returns>false if envelop one larger envelop two and true if vice versa</returns>
         public static bool operator <(Envelop one, Envelop two)
         {
+            bool result = false;
+
             if (one.SideA < two.SideA && one.SideB < one.SideB)
             {
-                return true;
+                result = true;
             }
 
             if (one.SideA < two.SideB && one.SideB < two.SideA)
             {
-                return true;
+                result = true;
             }
 
-            return false;
+            return result;
+        }
+
+        /// <summary>
+        /// Compares Envelops by sides
+        /// </summary>
+        /// <param name="one">Left envelop operand</param>
+        /// <param name="two">Right envelop operand</param>
+        /// <returns>true if envelop one equals envelop two and false if vice versa</returns>
+        public static bool operator ==(Envelop one, Envelop two)
+        {
+            bool result = false;
+
+            if (one.SideA == two.SideA && one.SideB == one.SideB)
+            {
+                result = true;
+            }
+
+            if (one.SideA == two.SideB && one.SideB == two.SideA)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Compares Envelops by sides
+        /// </summary>
+        /// <param name="one">Left envelop operand</param>
+        /// <param name="two">Right envelop operand</param>
+        /// <returns>true if envelop one doesn't equal envelop two and false if vice versa</returns>
+        public static bool operator !=(Envelop one, Envelop two)
+        {
+            bool result = false;
+
+            if (one.SideA != two.SideA || one.SideB != one.SideB)
+            {
+                result = true;
+            }
+
+            if (one.SideA != two.SideB || one.SideB != two.SideA)
+            {
+                result = true;
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -76,7 +134,7 @@ namespace EnvelopEnclosure
         /// <param name="sideB">Second side</param>
         /// <returns>Created envelop</returns>
         /// <exception cref="ArgumentException">Incorret sides</exception>
-        public static Envelop CreateEnvelop(double sideA, double sideB)
+        public static Envelop Create(double sideA, double sideB)
         {
             if (sideA <= 0 || sideB <= 0)
             {
@@ -84,6 +142,25 @@ namespace EnvelopEnclosure
             }
 
             return new Envelop(sideA, sideB);
+        }
+
+        /// <summary>
+        /// Serves as hash function
+        /// </summary>
+        /// <returns>Hash code</returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <summary>
+        /// Determines wheter objects are equal
+        /// </summary>
+        /// <param name="obj">Object To compare with</param>
+        /// <returns>true - are equal, false - aren't equal</returns>
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
         }
     }
 }

@@ -14,7 +14,9 @@ namespace EnvelopEnclosure.UserInterface
     {
         private static readonly string SEPARATE_LINE = new string('=', 60);
         private static readonly string WARNING_LINE = new string('!', 60);
-        private const string ARG_OUT_RANGE_EXCEPTION = "Number of argument greater than 4.";
+        private const string ARG_EXCEPTION = "Number of argument greater than 4.";
+        private static readonly string[] CONFIRM_KEY = { "Y", "YES" };
+        private const int NUMBER_OF_ARGS = 4;
 
         /// <summary>
         /// Runs Application
@@ -47,7 +49,7 @@ namespace EnvelopEnclosure.UserInterface
                     continue;
                 }
             }
-            while (key == "Y" || key == "YES");
+            while (key == CONFIRM_KEY[0] || key == CONFIRM_KEY[1]);
         }
 
         private void DisplayHelpMessage()
@@ -66,7 +68,7 @@ namespace EnvelopEnclosure.UserInterface
 
         private string[] GetInput()
         {
-            string[] arguments = new string[4];
+            string[] arguments = new string[NUMBER_OF_ARGS];
 
             Console.Write("Please enter envelops sides...");
             Console.Write(Environment.NewLine);
@@ -86,7 +88,7 @@ namespace EnvelopEnclosure.UserInterface
         {
             if (inputArguments.Length != 4)
             {
-                throw new ArgumentOutOfRangeException(ARG_OUT_RANGE_EXCEPTION);
+                throw new ArgumentException(ARG_EXCEPTION);
             }
 
             double[] arguments = new double[4];
@@ -109,11 +111,11 @@ namespace EnvelopEnclosure.UserInterface
         {
             if (arguments.Length != 4)
             {
-                throw new ArgumentOutOfRangeException(ARG_OUT_RANGE_EXCEPTION);
+                throw new ArgumentException(ARG_EXCEPTION);
             }
 
-            Envelop one = Envelop.CreateEnvelop(arguments[0], arguments[1]);
-            Envelop two = Envelop.CreateEnvelop(arguments[2], arguments[3]);
+            Envelop one = Envelop.Create(arguments[0], arguments[1]);
+            Envelop two = Envelop.Create(arguments[2], arguments[3]);
 
             string resultMessage = "Envelops are equal and cannot be enclosed";
 
@@ -121,7 +123,7 @@ namespace EnvelopEnclosure.UserInterface
             {
                 resultMessage = "Second envelop can be enclosed in first";
             }
-
+            else
             if (one < two)
             {
                 resultMessage = "First envelop can be enclosed in second";
