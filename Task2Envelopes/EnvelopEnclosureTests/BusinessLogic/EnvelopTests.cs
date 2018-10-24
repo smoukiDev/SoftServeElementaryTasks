@@ -1,4 +1,4 @@
-﻿// <copyright file="Envelop.cs" company="Serhii Maksymchuk">
+﻿// <copyright file="EnvelopTests.cs" company="Serhii Maksymchuk">
 // Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
 // </copyright>
 
@@ -100,6 +100,7 @@ namespace EnvelopEnclosure.Tests
             // Assert 
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         [DataRow(20, 30, 20, 20)]
         [DataRow(100, 100, 50, 100)]

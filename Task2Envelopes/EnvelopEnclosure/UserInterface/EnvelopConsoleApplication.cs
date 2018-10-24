@@ -15,8 +15,10 @@ namespace EnvelopEnclosure.UserInterface
     {
         private static readonly string SEPARATE_LINE = new string('=', 60);
         private static readonly string WARNING_LINE = new string('!', 60);
+
         private const string ARG_EXCEPTION = "Number of argument greater than 4.";
         private const string USER_GUIDE_LOSTED = "User Guide not found.";
+
         private static readonly string[] CONFIRM_KEY = { "Y", "YES" };
         private const int NUMBER_OF_ARGS = 4;
 
@@ -27,14 +29,15 @@ namespace EnvelopEnclosure.UserInterface
         {
             this.DisplayHelpMessage();
 
-            string key = null;
+            string key = string.Empty;
             do
             {
                 try
                 {
-                    Console.Clear();
                     double[] arguments = (double[])this.ConvertInput(this.GetInput());
+
                     this.PrintResult(this.CompareEnvelops(arguments));
+
                     Console.WriteLine(SEPARATE_LINE);
                     Console.Write("Y/Yes - next session. ");
                     Console.Write("Other - for exit: ");
@@ -67,9 +70,12 @@ namespace EnvelopEnclosure.UserInterface
                     }
                 }
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException ex)
             {
-                throw new FileNotFoundException(USER_GUIDE_LOSTED);
+                Console.WriteLine(WARNING_LINE);
+                Console.WriteLine(USER_GUIDE_LOSTED);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(WARNING_LINE);
             }
 
             Console.WriteLine("Press Enter...");

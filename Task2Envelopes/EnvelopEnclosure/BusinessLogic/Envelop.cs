@@ -11,6 +11,8 @@ namespace EnvelopEnclosure
     /// </summary>
     public class Envelop
     {
+        private const string ARGUMENT_EXCEPTION_MESSAGE = "Sides of envelop can be only positive values";
+
         private Envelop(double sideA, double sideB)
         {
             this.SideA = sideA;
@@ -40,7 +42,10 @@ namespace EnvelopEnclosure
         /// </summary>
         /// <param name="one">Left envelop operand</param>
         /// <param name="two">Right envelop operand</param>
-        /// <returns>true if envelop one larger envelop two and false if vice versa</returns>
+        /// <returns>
+        /// Returns true if envelop one larger then envelop two
+        /// and false if vice versa
+        /// </returns>
         public static bool operator >(Envelop one, Envelop two)
         {
             bool result = false;
@@ -63,7 +68,10 @@ namespace EnvelopEnclosure
         /// </summary>
         /// <param name="one">Left envelop operand</param>
         /// <param name="two">Right envelop operand</param>
-        /// <returns>false if envelop one larger envelop two and true if vice versa</returns>
+        /// <returns>
+        /// Returns false if envelop one larger envelop two
+        /// and true if vice versa
+        /// </returns>
         public static bool operator <(Envelop one, Envelop two)
         {
             bool result = false;
@@ -86,7 +94,10 @@ namespace EnvelopEnclosure
         /// </summary>
         /// <param name="one">Left envelop operand</param>
         /// <param name="two">Right envelop operand</param>
-        /// <returns>true if envelop one equals envelop two and false if vice versa</returns>
+        /// <returns>
+        /// Returns true if envelop one equals envelop two
+        /// and false if vice versa
+        /// </returns>
         public static bool operator ==(Envelop one, Envelop two)
         {
             bool result = false;
@@ -109,7 +120,10 @@ namespace EnvelopEnclosure
         /// </summary>
         /// <param name="one">Left envelop operand</param>
         /// <param name="two">Right envelop operand</param>
-        /// <returns>true if envelop one doesn't equal envelop two and false if vice versa</returns>
+        /// <returns>
+        /// Returns true if envelop one doesn't equal envelop two
+        /// and false if vice versa
+        /// </returns>
         public static bool operator !=(Envelop one, Envelop two)
         {
             bool result = false;
@@ -133,12 +147,14 @@ namespace EnvelopEnclosure
         /// <param name="sideA">First side</param>
         /// <param name="sideB">Second side</param>
         /// <returns>Created envelop</returns>
-        /// <exception cref="ArgumentException">Incorret sides</exception>
+        /// <exception cref="ArgumentException">
+        /// Sides of envelop can be only positive values
+        /// </exception>
         public static Envelop Create(double sideA, double sideB)
         {
             if (sideA <= 0 || sideB <= 0)
             {
-                throw new ArgumentException("Sides of envelop can be only positive values");
+                throw new ArgumentException(ARGUMENT_EXCEPTION_MESSAGE);
             }
 
             return new Envelop(sideA, sideB);
@@ -156,8 +172,10 @@ namespace EnvelopEnclosure
         /// <summary>
         /// Determines wheter objects are equal
         /// </summary>
-        /// <param name="obj">Object To compare with</param>
-        /// <returns>true - are equal, false - aren't equal</returns>
+        /// <param name="obj">Object to compare with</param>
+        /// <returns>
+        /// Returns true - are equal, false - aren't equal
+        /// </returns>
         public override bool Equals(object obj)
         {
             return base.Equals(obj);
