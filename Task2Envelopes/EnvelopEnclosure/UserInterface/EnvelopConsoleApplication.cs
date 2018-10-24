@@ -34,6 +34,7 @@ namespace EnvelopEnclosure.UserInterface
             {
                 try
                 {
+                    Console.Clear();
                     double[] arguments = (double[])this.ConvertInput(this.GetInput());
 
                     this.PrintResult(this.CompareEnvelops(arguments));
