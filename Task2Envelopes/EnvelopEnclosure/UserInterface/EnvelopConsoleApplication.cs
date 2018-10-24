@@ -6,6 +6,7 @@ namespace EnvelopEnclosure.UserInterface
 {
     using System;
     using System.Collections;
+    using System.IO;
 
     /// <summary>
     /// Represent application comparing envelops
@@ -15,6 +16,7 @@ namespace EnvelopEnclosure.UserInterface
         private static readonly string SEPARATE_LINE = new string('=', 60);
         private static readonly string WARNING_LINE = new string('!', 60);
         private const string ARG_EXCEPTION = "Number of argument greater than 4.";
+        private const string USER_GUIDE_LOSTED = "User Guide not found.";
         private static readonly string[] CONFIRM_KEY = { "Y", "YES" };
         private const int NUMBER_OF_ARGS = 4;
 
@@ -54,14 +56,23 @@ namespace EnvelopEnclosure.UserInterface
 
         private void DisplayHelpMessage()
         {
-            Console.WriteLine(SEPARATE_LINE);
-            Console.WriteLine("Welcome to EnvelopEnclosure Application");
-            Console.WriteLine(SEPARATE_LINE);
-            Console.WriteLine("Print information about the envelop sides to compare them");
-            Console.WriteLine("Print Y or YES to new session of comparison");
-            Console.WriteLine("Other input cause exit from application");
-            Console.WriteLine(SEPARATE_LINE);
-            Console.Write("Press Enter to continue");
+            string path = Directory.GetCurrentDirectory() + "\\Resources\\EnvelopeEnclosureGuide.txt";
+            try
+            {
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        Console.WriteLine(reader.ReadLine());
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                throw new FileNotFoundException(USER_GUIDE_LOSTED);
+            }
+
+            Console.WriteLine("Press Enter...");
             Console.ReadLine();
             Console.Clear();
         }
@@ -117,16 +128,21 @@ namespace EnvelopEnclosure.UserInterface
             Envelop one = Envelop.Create(arguments[0], arguments[1]);
             Envelop two = Envelop.Create(arguments[2], arguments[3]);
 
-            string resultMessage = "Envelops are equal and cannot be enclosed";
+            string resultMessage = "Result undefined";
 
             if (one > two)
             {
                 resultMessage = "Second envelop can be enclosed in first";
             }
-            else
+
             if (one < two)
             {
                 resultMessage = "First envelop can be enclosed in second";
+            }
+
+            if (one == two)
+            {
+                resultMessage = "Envelops are equal and cannot be enclosed";
             }
 
             return resultMessage;

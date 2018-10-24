@@ -1,0 +1,14 @@
+﻿Welcome EnvelopeEnclosure Application
+==================================================================
+Application helps to check
+whether one envelop can be embeded in other
+==================================================================
+Usage:
+
+>Print information about the envelop sides to compare them
+
+>Print Y or YES to new session of comparison
+
+>Other input cause exit from application
+==================================================================
+

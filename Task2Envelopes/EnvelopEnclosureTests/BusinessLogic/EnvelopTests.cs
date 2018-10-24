@@ -20,29 +20,29 @@ namespace EnvelopEnclosure.Tests
         [DataRow(0, 0)]
         public void CreateEnvelopTest_ThrowsArgumentException(double sideA, double sideB)
         {
-            /// Arrange
+            // Arrange
             Envelop envelop;
 
-            /// Act                     
+            // Act                     
 
-            /// Assert 
+            // Assert 
             Assert.ThrowsException<ArgumentException>(() => envelop = Envelop.Create(sideA, sideB));
         }
 
         [TestMethod]
         public void CreateEnvelopTest_ReturnInstanceSuccessfully()
         {
-            /// Arrange
+            // Arrange
             Envelop envelop;
             double sideA = 20.0d;
             double sideB =  5.0d;
 
-            /// Act 
+            // Act 
+            // Assert
             try
             {
                 envelop = Envelop.Create(sideA, sideB);
             }
-            /// Assert 
             catch (ArgumentException)
             {
                 Assert.Fail();
@@ -54,16 +54,16 @@ namespace EnvelopEnclosure.Tests
         [DataRow(40, 120, 20, 5)]
         public void OperatorGreaterThan_ReturnTrue(double oneSideA, double oneSideB, double twoSideA, double twoSideB)
         {
-            /// Arrange
+            // Arrange
             Envelop firstEnvelop = Envelop.Create(oneSideA, oneSideB);
             Envelop secondEnvelop = Envelop.Create(twoSideA, twoSideB); ;
             bool actual;
             bool expected = true;
 
-            /// Act 
+            // Act 
             actual = firstEnvelop > secondEnvelop ? true : false;
 
-            /// Assert 
+            // Assert 
             Assert.AreEqual(expected, actual);
         }
 
@@ -72,16 +72,16 @@ namespace EnvelopEnclosure.Tests
         [DataRow(20, 5, 40, 120)]
         public void OperatorLessThan_ReturnTrue(double oneSideA, double oneSideB, double twoSideA, double twoSideB)
         {
-            /// Arrange
+            // Arrange
             Envelop firstEnvelop = Envelop.Create(oneSideA, oneSideB);
             Envelop secondEnvelop = Envelop.Create(twoSideA, twoSideB); ;
             bool actual;
             bool expected = true;
 
-            /// Act 
+            // Act 
             actual = firstEnvelop < secondEnvelop ? true : false;
 
-            /// Assert 
+            // Assert 
             Assert.AreEqual(expected, actual);
         }
 
@@ -90,14 +90,14 @@ namespace EnvelopEnclosure.Tests
         [DataRow(100, 100, 100, 100)]
         public void OperatorEqualTo_ReturnTrue(double oneSideA, double oneSideB, double twoSideA, double twoSideB)
         {
-            /// Arrange
+            // Arrange
             Envelop firstEnvelop = Envelop.Create(oneSideA, oneSideB);
             Envelop secondEnvelop = Envelop.Create(twoSideA, twoSideB); ;
             bool actual;
             bool expected = true;
-            /// Act 
+            // Act 
             actual = firstEnvelop == secondEnvelop ? true : false;
-            /// Assert 
+            // Assert 
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
@@ -105,14 +105,14 @@ namespace EnvelopEnclosure.Tests
         [DataRow(100, 100, 50, 100)]
         public void OperatorNotEqualTo_ReturnTrue(double oneSideA, double oneSideB, double twoSideA, double twoSideB)
         {
-            /// Arrange
+            // Arrange
             Envelop firstEnvelop = Envelop.Create(oneSideA, oneSideB);
             Envelop secondEnvelop = Envelop.Create(twoSideA, twoSideB); ;
             bool actual;
             bool expected = true;
-            /// Act 
+            // Act 
             actual = firstEnvelop != secondEnvelop ? true : false;
-            /// Assert 
+            // Assert 
             Assert.AreEqual(expected, actual);
         }
     }
