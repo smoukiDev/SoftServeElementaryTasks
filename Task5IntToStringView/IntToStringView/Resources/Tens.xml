@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Tens>
+  <Ten key = "0" description = "zero" />
+  <Ten key = "1" description = "ten" />
+  <Ten key = "2" description = "twenty" />
+  <Ten key = "3" description = "thirty" />
+  <Ten key = "4" description = "forty" />
+  <Ten key = "5" description = "fifty" />
+  <Ten key = "6" description = "sixty" />
+  <Ten key = "7" description = "seventy" />
+  <Ten key = "8" description = "eighty" />
+  <Ten key = "9" description = "ninety" />
+</Tens>

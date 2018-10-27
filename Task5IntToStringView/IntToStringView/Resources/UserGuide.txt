@@ -1,0 +1,17 @@
+﻿==================================================================
+Welcome to Integer Number Convertor
+==================================================================
+Application helps to convert integer number
+to representation in words
+==================================================================
+Usage:
+
+>Run application from command line
+
+>Example of application running
+ .../IntToStringView [number]
+
+>Application converts numbers in range
+ -9,223,372,036,854,775,808
+ +9,223,372,036,854,775,808
+==================================================================

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<units>
+  <unit key = "0"   description = "zero" />
+  <unit key = "1"   description = "one" />
+  <unit key = "2"   description = "two" />
+  <unit key = "3"   description = "three" />
+  <unit key = "4"   description = "four" />
+  <unit key = "5"   description = "five" />
+  <unit key = "6"   description = "six" />
+  <unit key = "7"   description = "seven" />
+  <unit key = "8"   description = "eight" />
+  <unit key = "9"   description = "nine" />
+  <unit key = "10"  description = "ten" />
+  <unit key = "11"  description = "eleven" />
+  <unit key = "12"  description = "twelve" />
+  <unit key = "13"  description = "thirteen" />
+  <unit key = "14"  description = "fourteen" />
+  <unit key = "15"  description = "fifteen" />
+  <unit key = "16"  description = "sixteen" />
+  <unit key = "17"  description = "seventeen" />
+  <unit key = "18"  description = "eightteen" />
+  <unit key = "19"  description = "nineteen" />
+</units>

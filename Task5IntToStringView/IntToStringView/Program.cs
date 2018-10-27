@@ -1,15 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Program.cs" company="Serhii Maksymchuk">
+// Copyright (c) 2018 by Serhii Maksymchuk. All Rights Reserved.
+// </copyright>
 
 namespace IntToStringView
 {
-    class Program
+    using IntToStringView.UserInteface;
+
+    /// <summary>
+    /// Serves as entery point to application
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Provides entery point to application
+        /// </summary>
+        /// <param name="args">Console input arguments</param>
+        private static void Main(string[] args)
         {
+            StringViewConverterConsoleApplication application;
+            application = new StringViewConverterConsoleApplication();
+            application.Run(args);
         }
     }
 }

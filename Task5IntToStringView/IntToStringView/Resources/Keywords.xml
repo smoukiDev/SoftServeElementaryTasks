@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Keywords>
+  <Keyword key = "1"   description = "thousand"/>
+  <Keyword key = "2"   description = "million"/>
+  <Keyword key = "3"   description = "billion"/>
+  <Keyword key = "4"   description = "trillion"/>
+  <Keyword key = "5"   description = "quadrillion"/>
+  <Keyword key = "6"   description = "quintillion"/>
+</Keywords>
